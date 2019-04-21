@@ -3,5 +3,6 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="titulo">#FFFF9239</color>
+    <color name="titulo">#FF8C00</color>
+    <color name="botaoLaranja">#FF5C00</color>
 </resources>
