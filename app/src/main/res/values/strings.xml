@@ -3,4 +3,6 @@
     <string name="titulo">myBooks</string>
     <string name="sign_up">Criar conta</string>
     <string name="sign_in">Entrar</string>
+    <string name="login">Login</string>
+    <string name="senha">Senha</string>
 </resources>

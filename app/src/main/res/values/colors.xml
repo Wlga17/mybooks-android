@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
     <color name="titulo">#FF8C00</color>
     <color name="botaoLaranja">#FF5C00</color>
+    <color name="textoHint">#C4C4C4</color>
 </resources>

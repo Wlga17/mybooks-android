@@ -1,59 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text="@string/titulo"
         android:textColor="@color/titulo"
         android:textSize="36sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edt_login"
-        android:layout_width="match_parent"
+        android:layout_width="306dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginRight="40dp"
-        android:inputType="text"
-        android:text="Login" />
+        android:layout_marginTop="129dp"
+        android:layout_gravity="center"
+        android:hint="@string/login"
+        android:textColorHint="@color/textoHint"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_style"/>
 
     <EditText
-        android:id="@+id/edt_senha"
-        android:layout_width="match_parent"
+        android:layout_width="306dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginRight="40dp"
-        android:inputType="textPassword"
-        android:text="Senha" />
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:hint="@string/senha"
+        android:textColorHint="@color/textoHint"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_style"/>
 
-    <Button
-        android:id="@+id/btn_novaConta"
-        android:layout_width="135dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_up"
-        android:textColor="@color/botaoLaranja"
-        android:background="@drawable/botao_branco"
-        android:layout_marginTop="280dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_entrar"
-        android:layout_width="135dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginLeft="200dp"
-        android:background="@drawable/botao_laranja"
-        android:text="@string/sign_in"
-        android:textColor="@color/colorPrimary" />
+        <Button
+            android:id="@+id/btn_novaConta"
+            android:layout_width="135dp"
+            android:layout_height="50dp"
+            android:text="@string/sign_up"
+            android:textColor="@color/botaoLaranja"
+            android:background="@drawable/botao_branco"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="53dp"/>
 
+        <Button
+            android:id="@+id/btn_entrar"
+            android:layout_width="135dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="36dp"
+            android:background="@drawable/botao_laranja"
+            android:text="@string/sign_in"
+            android:textColor="@color/colorPrimary" />
 
-</RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
