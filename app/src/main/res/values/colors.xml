@@ -6,4 +6,5 @@
     <color name="titulo">#FF8C00</color>
     <color name="detalheLaranja">#FF5C00</color>
     <color name="textoHint">#C4C4C4</color>
+    <color name="textoEscuro">#564D4D</color>
 </resources>

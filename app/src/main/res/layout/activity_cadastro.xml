@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/titulo"
+        android:textColor="@color/titulo"
+        android:layout_marginTop="35dp"
+        android:textSize="36sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/criarCadastro"
+        android:textColor="@color/textoEscuro"
+        android:layout_marginTop="68dp"
+        android:layout_marginLeft="49dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="306dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="21dp"
+        android:hint="@string/nome"
+        android:layout_gravity="center"
+        android:textColorHint="@color/textoHint"
+        android:textColor="@color/detalheLaranja"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_style"/>
+
+    <EditText
+        android:layout_width="306dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="21dp"
+        android:hint="@string/email"
+        android:layout_gravity="center"
+        android:textColorHint="@color/textoHint"
+        android:textColor="@color/detalheLaranja"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_style"/>
+
+    <EditText
+        android:layout_width="306dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="21dp"
+        android:hint="@string/login"
+        android:layout_gravity="center"
+        android:textColorHint="@color/textoHint"
+        android:textColor="@color/detalheLaranja"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_style"/>
+
+    <EditText
+        android:layout_width="306dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="21dp"
+        android:hint="@string/senha"
+        android:layout_gravity="center"
+        android:textColorHint="@color/textoHint"
+        android:textColor="@color/detalheLaranja"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_style"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancelar"
+            android:layout_width="135dp"
+            android:layout_height="50dp"
+            android:text="@string/cancelar"
+            android:textColor="@color/detalheLaranja"
+            android:background="@drawable/botao_branco"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="53dp"/>
+
+        <Button
+            android:id="@+id/btn_criar_conta"
+            android:layout_width="135dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="36dp"
+            android:background="@drawable/botao_laranja"
+            android:text="@string/criarConta"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -5,4 +5,9 @@
     <string name="sign_in">Entrar</string>
     <string name="login">Login</string>
     <string name="senha">Senha</string>
+    <string name="criarCadastro">Criar cadastro</string>
+    <string name="nome">Nome</string>
+    <string name="email">Email</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="criarConta">Criar conta</string>
 </resources>
