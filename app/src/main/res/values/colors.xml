@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#ffffff</color>
-    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorPrimaryDark">#D3D3D3</color>
     <color name="colorAccent">#D81B60</color>
     <color name="titulo">#FF8C00</color>
-    <color name="botaoLaranja">#FF5C00</color>
+    <color name="detalheLaranja">#FF5C00</color>
     <color name="textoHint">#C4C4C4</color>
 </resources>
