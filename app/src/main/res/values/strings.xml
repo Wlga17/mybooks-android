@@ -17,5 +17,5 @@
     <string name="title_activity_k">kActivity</string>
     <string name="title_activity_lista_desejo">ListaDesejoActivity</string>
     <string name="listaDesejo">Lista de desejos</string>
-    <string name="quantidadeLivros">Você tem 17 livros em sua lista de desejos</string>
+    <string name="quantidadeLivros">Você tem 0 livros em sua lista de desejos</string>
 </resources>

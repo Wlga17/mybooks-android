@@ -10,6 +10,8 @@
     <item
         android:title="Lidos"/>
 
+    <item
+        android:title="Perfil"/>
 
 
 </menu>
