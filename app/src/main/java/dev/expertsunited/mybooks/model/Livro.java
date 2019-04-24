@@ -8,6 +8,7 @@ public class Livro {
     private String edicao;
     private String indicacao;
     private Double valor;
+    private byte[] capa;
 
     public Livro() {
 
@@ -67,5 +68,13 @@ public class Livro {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public byte[] getCapa() {
+        return capa;
+    }
+
+    public void setCapa(byte[] capa) {
+        this.capa = capa;
     }
 }

@@ -31,6 +31,7 @@
         android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/txt_Nome"
         android:layout_width="306dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -42,6 +43,7 @@
         android:background="@drawable/edit_text_style"/>
 
     <EditText
+        android:id="@+id/txt_Email"
         android:layout_width="306dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -53,6 +55,7 @@
         android:background="@drawable/edit_text_style"/>
 
     <EditText
+        android:id="@+id/txt_Login"
         android:layout_width="306dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -64,6 +67,7 @@
         android:background="@drawable/edit_text_style"/>
 
     <EditText
+        android:id="@+id/txt_Senha"
         android:layout_width="306dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
@@ -90,7 +94,7 @@
             android:layout_marginTop="10dp"/>
 
         <Button
-            android:id="@+id/btn_criar_conta"
+            android:id="@+id/btn_criarConta"
             android:layout_width="135dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
