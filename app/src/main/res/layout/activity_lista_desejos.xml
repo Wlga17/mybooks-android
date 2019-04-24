@@ -41,18 +41,16 @@
         </LinearLayout>
 
         <android.support.design.widget.BottomNavigationView
-
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:background="@color/colorPrimary"
-            app:itemBackground="@color/colorPrimary"
-            app:itemIconTint="@color/detalheLaranja"
             app:itemTextColor="@color/detalheLaranja"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:menu="@menu/navigation" />
+            app:menu="@menu/navigation"
+            app:itemIconTint="@color/detalheLaranja" />
 
-</android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
