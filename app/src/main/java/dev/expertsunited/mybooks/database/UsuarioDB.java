@@ -1,8 +1,11 @@
 package dev.expertsunited.mybooks.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import dev.expertsunited.mybooks.model.Usuario;
 
 public class UsuarioDB extends SQLiteOpenHelper {
 
@@ -27,5 +30,16 @@ public class UsuarioDB extends SQLiteOpenHelper {
         String tabelaUsuario = "DROP TABLE IF EXISTS usuario";
 
         db.execSQL(tabelaUsuario);
+    }
+
+    public void salvarUsuario(Usuario usuario) {
+        ContentValues values = new ContentValues();
+
+        values.put("nome", usuario.getNome());
+        values.put("email", usuario.getEmail());
+        values.put("login", usuario.getLogin());
+        values.put("senha", usuario.getSenha());
+
+        getWritableDatabase().insert("aluno", null, values);
     }
 }

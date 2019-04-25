@@ -7,6 +7,7 @@ import android.widget.EditText;
 public class CadastroActivity extends AppCompatActivity {
 
     private ViewHolder mViewHolder = new ViewHolder();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
