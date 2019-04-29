@@ -1,13 +1,16 @@
 package dev.expertsunited.mybooks;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,9 +20,9 @@ import dev.expertsunited.mybooks.model.Usuario;
 public class CadastroActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewHolder mViewHolder = new ViewHolder();
-    private DbHelper dbHelper = new DbHelper(this);
-    private SQLiteDatabase db = dbHelper.getWritableDatabase();
-    private Usuario usuario;
+    private DbHelper dbHelper;
+    private SQLiteDatabase db;
+    private Usuario usuario = new Usuario();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +35,13 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         this.mViewHolder.txtLogin = findViewById(R.id.txt_Login);
         this.mViewHolder.txtSenha = findViewById(R.id.txt_Senha);
         this.mViewHolder.btnCriarConta = findViewById(R.id.btn_criarConta);
+        this.mViewHolder.btnCancelar = findViewById(R.id.btn_cancelar);
 
         this.mViewHolder.btnCriarConta.setOnClickListener(this);
+        this.mViewHolder.btnCancelar.setOnClickListener(this);
+
+        dbHelper = new DbHelper(this);
+
     }
 
     @Override
@@ -47,10 +55,14 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
 
            this.salvarUsuario(usuario);
        }
+       if (id == R.id.btn_cancelar) {
+           Intent intent = new Intent(this, MainActivity.class);
+           startActivity(intent);
+       }
     }
 
     public void salvarUsuario(Usuario usuario) {
-
+        db = dbHelper.getWritableDatabase();
         ContentValues novoUsuario = new ContentValues();
 
         novoUsuario.put("nome", usuario.getNome());
@@ -58,8 +70,14 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         novoUsuario.put("login", usuario.getLogin());
         novoUsuario.put("senha", usuario.getSenha());
 
-        db.insert("usuarios", null, novoUsuario);
-        db.close();
+        long resultado = db.insert("usuarios", null, novoUsuario);
+
+        if (resultado != -1)    {
+            Toast.makeText(this, "Cadastrado com sucesso! ", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "Erro ao cadastrar! ", Toast.LENGTH_SHORT).show();
+        }
+        dbHelper.close();
     }
 
     public ArrayList<Usuario> getUsuarios() {
@@ -82,11 +100,13 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         return usuarios;
     }
 
+
     public static class ViewHolder {
         EditText txtNome;
         EditText txtEmail;
         EditText txtLogin;
         EditText txtSenha;
         Button btnCriarConta;
+        Button btnCancelar;
     }
 }

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE = "mybooks.db";
+    private static final String DATABASE = "mybooks";
     private static final int VERSION = 1;
 
     public DbHelper(Context context) {
@@ -15,14 +15,15 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String initDataBase = "CREATE TABLE usuarios (" +
-                              "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+        String tableUser = "CREATE TABLE IF NOT EXISTS usuarios (" +
+                              "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                               "nome VARCHAR NOT NULL, " +
                               "email VARCHAR NOT NULL, " +
                               "login VARCHAR NOT NULL, " +
-                              "senha VARCHAR NOT NULL); " +
-                              "CREATE TABLE livros (" +
-                              "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                              "senha VARCHAR NOT NULL); ";
+
+        String tableBook =    "CREATE TABLE IF NOT EXISTS livros (" +
+                              "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                               "titulo VARCHAR NOT NULL, " +
                               "autor VARCHAR NOT NULL, " +
                               "editora VARCHAR, " +
@@ -31,7 +32,8 @@ public class DbHelper extends SQLiteOpenHelper {
                               "preco VARCHAR, " +
                               "capa BYTE);";
 
-        db.execSQL(initDataBase);
+        db.execSQL(tableUser);
+        db.execSQL(tableBook);
     }
 
     @Override
