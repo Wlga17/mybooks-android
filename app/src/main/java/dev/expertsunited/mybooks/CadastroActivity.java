@@ -53,7 +53,11 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
            usuario.setLogin(this.mViewHolder.txtLogin.getText().toString());
            usuario.setSenha(this.mViewHolder.txtSenha.getText().toString());
 
-           this.salvarUsuario(usuario);
+           if(usuario.getNome().equals("") || usuario.getEmail().equals("") || usuario.getLogin().equals("") || usuario.getSenha().equals("")){
+               Toast.makeText(this, "Todos os campos precisam ser preenchidos", Toast.LENGTH_SHORT).show();
+           }else{
+               this.salvarUsuario(usuario);
+           }
        }
        if (id == R.id.btn_cancelar) {
            Intent intent = new Intent(this, MainActivity.class);
@@ -61,7 +65,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
        }
     }
 
-    public void salvarUsuario(Usuario usuario) {
+    public long salvarUsuario(Usuario usuario) {
         db = dbHelper.getWritableDatabase();
         ContentValues novoUsuario = new ContentValues();
 
@@ -71,35 +75,14 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
         novoUsuario.put("senha", usuario.getSenha());
 
         long resultado = db.insert("usuarios", null, novoUsuario);
-
-        if (resultado != -1)    {
+        if (resultado > 0)    {
             Toast.makeText(this, "Cadastrado com sucesso! ", Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this, "Erro ao cadastrar! ", Toast.LENGTH_SHORT).show();
         }
         dbHelper.close();
+        return resultado;
     }
-
-    public ArrayList<Usuario> getUsuarios() {
-
-        String [] colunas = {"id", "nome", "email", "login"};
-        Cursor cursor = dbHelper.getWritableDatabase().query("usuarios", colunas, null, null, null, null, null, null);
-
-        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-
-        while (cursor.moveToNext()) {
-            Usuario usuario = new Usuario();
-            usuario.setId(cursor.getDouble(0));
-            usuario.setNome(cursor.getString(1));
-            usuario.setEmail(cursor.getString(2));
-            usuario.setLogin(cursor.getString(3));
-
-            usuarios.add(usuario);
-        }
-
-        return usuarios;
-    }
-
 
     public static class ViewHolder {
         EditText txtNome;
