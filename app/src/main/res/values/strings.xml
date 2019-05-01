@@ -26,4 +26,10 @@
     <string name="editora">Editora</string>
     <string name="indicacao">Indicação</string>
     <string name="preco">Preço</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="biblioteca">Minha Biblioteca</string>
+    <string name="quantidadeLivrosBiblioteca">Você tem 0 livros em sua biblioteca</string>
+    <string name="lidos">Livros Lidos</string>
+    <string name="quantidadeLivrosLidos">Você leu 0 livros</string>
 </resources>

@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if (result.equals("OK")) {
                     Toast.makeText(this, "Login OK! ", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(this, ListaDesejosActivity.class);
+                    Intent intent = new Intent(this, PrincipalActivity.class);
                     startActivity(intent);
                 }else {
                     Toast.makeText(this, "Login invalido! ", Toast.LENGTH_SHORT).show();

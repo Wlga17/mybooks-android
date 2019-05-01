@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_desejos"
         android:icon="@drawable/ic_star_border_black_24dp"
         android:title="Desejos" />
 
     <item
+        android:id="@+id/menu_biblioteca"
         android:icon="@drawable/ic_library_books_black_24dp"
         android:title="Biblioteca"/>
 
     <item
+        android:id="@+id/menu_lidos"
         android:icon="@drawable/ic_local_library_black_24dp"
         android:title="Lidos"/>
 
     <item
+        android:id="@+id/menu_perfil"
         android:icon="@drawable/ic_perm_identity_black_24dp"
         android:title="Perfil"/>
 
