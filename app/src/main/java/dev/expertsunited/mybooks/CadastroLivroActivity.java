@@ -24,7 +24,7 @@ import android.widget.ImageView;
 
 public class CadastroLivroActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private ImageView img;
+    private ImageView imagem;
     private Button btnCapa;
     private final int galeriaImagens = 1;
     private final int PERMISSAO_REQUEST = 2;
@@ -35,8 +35,7 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_cadastro_livro);
         getSupportActionBar().hide();
 
-        if
-        (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             }
             else
@@ -45,7 +44,7 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
             }
         }
 
-        img = (ImageView) findViewById(R.id.img_livro_cadastro);
+        imagem = (ImageView) findViewById(R.id.img_livro_cadastro);
         btnCapa = (Button) findViewById(R.id.btn_adicionar_capa);
         btnCapa.setOnClickListener(this);
 
@@ -56,6 +55,7 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
         int id = view.getId();
 
         if(id == R.id.btn_adicionar_capa){
+
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intent,galeriaImagens);
         }
@@ -64,34 +64,29 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == RESULT_OK && resultCode == galeriaImagens){
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == galeriaImagens) {
             Uri selectedImage = data.getData();
-            String[] filePath = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getContentResolver().query(selectedImage, filePath, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePath[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-
-            Bitmap imagemGaleria = (BitmapFactory.decodeFile(picturePath));
-            img.setImageBitmap(imagemGaleria);
+            String[] filePath = {
+                    MediaStore.Images.Media.DATA
+            };
+            Cursor ponteiro = getContentResolver().query(selectedImage,filePath, null, null, null);
+            ponteiro.moveToFirst();
+            int columnIndex = ponteiro.getColumnIndex(filePath[0]);
+            String picturePath = ponteiro.getString(columnIndex);
+            ponteiro.close();
+            Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+            imagem.setImageBitmap(thumbnail);
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults){
-
-        if(requestCode == PERMISSAO_REQUEST){
-
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                //permissao concedida
-            }else{
-                //permissao negada
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == PERMISSAO_REQUEST) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // A permissão foi concedida. Pode continuar
+            } else {
+                // A permissão foi negada. Precisa ver o que deve ser desabilitado
             }
             return;
         }
