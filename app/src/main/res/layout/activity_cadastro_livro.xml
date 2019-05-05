@@ -25,6 +25,7 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/img_livro_cadastro"
             android:layout_width="100dp"
             android:layout_height="143dp"
             android:layout_marginTop="25dp"
