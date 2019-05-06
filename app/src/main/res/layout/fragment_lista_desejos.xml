@@ -39,6 +39,8 @@
             android:layout_marginBottom="16dp"
             android:background="@color/detalheLaranja" />
 
+
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycleId"
             android:layout_height="match_parent"

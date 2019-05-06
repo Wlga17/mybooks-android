@@ -24,6 +24,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+
 import dev.expertsunited.mybooks.database.LivroDAO;
 import dev.expertsunited.mybooks.model.Livro;
 
@@ -32,6 +34,7 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
     private ImageView imagem;
     private Button btnCapa;
     private Button btnAdd, btnCancelar;
+    private Bitmap thumbnail;
     private EditText edtTitulo, edtAutor, edtEditora, edtEdicao, edtPreco, edtIndicacao;
     private final int galeriaImagens = 1;
     private final int PERMISSAO_REQUEST = 2;
@@ -81,6 +84,9 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
         if (id == R.id.btn_adicionarLivro) {
             Livro livro = new Livro();
             LivroDAO dao = new LivroDAO( getApplicationContext() );
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte imageBytes[] = stream.toByteArray();
 
 
             livro.setTitulo(edtTitulo.getText().toString());
@@ -89,6 +95,7 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
             livro.setEdicao(edtEdicao.getText().toString());
             livro.setValor(Double.parseDouble(edtPreco.getText().toString()));
             livro.setIndicacao(edtIndicacao.getText().toString());
+            livro.setCapa(imageBytes);
 
             if (livro.getTitulo().equals("") || livro.getAutor().equals("")) {
                 Toast.makeText(this, "Preecher o Titulo e o Autor", Toast.LENGTH_SHORT).show();
@@ -119,7 +126,7 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
             int columnIndex = ponteiro.getColumnIndex(filePath[0]);
             String picturePath = ponteiro.getString(columnIndex);
             ponteiro.close();
-            Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+            thumbnail = (BitmapFactory.decodeFile(picturePath));
             imagem.setImageBitmap(thumbnail);
         }
     }
