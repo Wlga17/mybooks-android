@@ -9,6 +9,9 @@ public class Livro {
     private String indicacao;
     private Double valor;
     private byte[] capa;
+    private boolean isBiblioteca;
+    private boolean isDesejo;
+    private boolean isLidos;
 
     public Livro() {
 
@@ -76,5 +79,29 @@ public class Livro {
 
     public void setCapa(byte[] capa) {
         this.capa = capa;
+    }
+
+    public boolean isBiblioteca() {
+        return isBiblioteca;
+    }
+
+    public void setBiblioteca(boolean biblioteca) {
+        isBiblioteca = biblioteca;
+    }
+
+    public boolean isDesejo() {
+        return isDesejo;
+    }
+
+    public void setDesejo(boolean desejo) {
+        isDesejo = desejo;
+    }
+
+    public boolean isLidos() {
+        return isLidos;
+    }
+
+    public void setLidos(boolean lidos) {
+        isLidos = lidos;
     }
 }

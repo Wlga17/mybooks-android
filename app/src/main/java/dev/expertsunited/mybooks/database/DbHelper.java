@@ -31,7 +31,10 @@ public class DbHelper extends SQLiteOpenHelper {
                                 " edicao TEXT, " +
                                 " indicacao TEXT, " +
                                 " preco TEXT, " +
-                                " capa BLOB ); ";
+                                " capa BLOB," +
+                                " isBiblioteca BOOLEAN," +
+                                " isDesejo BOOLEAN," +
+                                " isLidos BOOLEAN ); ";
         try {
             db.execSQL( tableUser );
             db.execSQL( tableBook );
