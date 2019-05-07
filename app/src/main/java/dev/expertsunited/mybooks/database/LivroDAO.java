@@ -61,17 +61,22 @@ public class LivroDAO implements ILivroDAO{
     public List<Livro> listar() {
         List<Livro> lista = new ArrayList<>();
 
-        String sql = "SELECT titulo FROM livros;";
+        String sqlTitulo = "SELECT titulo FROM livros;";
+        String sqlCapa = "SELECT capa FROM livros;";
 
-        Cursor c = dbQuery.rawQuery(sql, null);
+        Cursor puxarTitulo = dbQuery.rawQuery(sqlTitulo, null);
+        Cursor puxarCapa = dbQuery.rawQuery(sqlCapa, null);
 
-        while(c.moveToNext()){
+        while(puxarTitulo.moveToNext() && puxarCapa.moveToNext()){
 
             Livro livro = new Livro();
-            String titulo = c.getString(c.getColumnIndex("titulo"));
+            String titulo = puxarTitulo.getString(puxarTitulo.getColumnIndex("titulo"));
+            byte[] capa = puxarCapa.getBlob(puxarCapa.getColumnIndex("capa"));
 
             livro.setTitulo(titulo);
+            livro.setCapa(capa);
             lista.add(livro);
+
         }
 
         return lista;

@@ -22,9 +22,9 @@
             android:id="@+id/nomeLivroId"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:background="@color/detalheLaranja"
-            android:textColor="@color/cardview_dark_background" />
+            android:textColor="@color/colorPrimary" />
 
     </LinearLayout>
 
