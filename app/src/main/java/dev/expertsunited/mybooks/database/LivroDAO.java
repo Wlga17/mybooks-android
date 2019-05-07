@@ -33,9 +33,9 @@ public class LivroDAO implements ILivroDAO{
         cv.put("indicacao", livro.getIndicacao());
         cv.put("preco", livro.getValor());
         cv.put("capa", livro.getCapa());
-//        cv.put("isBiblioteca", livro.isBiblioteca());
-//        cv.put("isDesejo", livro.isDesejo());
-//        cv.put("isLidos", livro.isLidos());
+        cv.put("isBiblioteca", livro.isBiblioteca());
+        cv.put("isDesejo", livro.isDesejo());
+        cv.put("isLidos", livro.isLidos());
 
         try {
             db.insert("livros", null, cv);
@@ -58,20 +58,47 @@ public class LivroDAO implements ILivroDAO{
     }
 
     @Override
-    public List<Livro> listar() {
+    public List<Livro> listaDeBiblioteca() {
         List<Livro> lista = new ArrayList<>();
 
-        String sqlTitulo = "SELECT titulo FROM livros;";
-        String sqlCapa = "SELECT capa FROM livros;";
+        String sql = "SELECT titulo,capa FROM livros WHERE isBiblioteca=1;";
+        //String sqlCapa = "SELECT capa FROM livros WHERE isBiblioteca=true;";
 
-        Cursor puxarTitulo = dbQuery.rawQuery(sqlTitulo, null);
-        Cursor puxarCapa = dbQuery.rawQuery(sqlCapa, null);
+        Cursor c = dbQuery.rawQuery(sql, null);
+        //Cursor puxarCapa = dbQuery.rawQuery(sqlCapa, null);
 
-        while(puxarTitulo.moveToNext() && puxarCapa.moveToNext()){
+        while(c.moveToNext()){
 
             Livro livro = new Livro();
-            String titulo = puxarTitulo.getString(puxarTitulo.getColumnIndex("titulo"));
-            byte[] capa = puxarCapa.getBlob(puxarCapa.getColumnIndex("capa"));
+            String titulo = c.getString(c.getColumnIndex("titulo"));
+            byte[] capa = c.getBlob(c.getColumnIndex("capa"));
+
+            livro.setTitulo(titulo);
+            livro.setCapa(capa);
+            lista.add(livro);
+
+        }
+
+        return lista;
+
+    }
+
+    @Override
+    public List<Livro> listaDeDesejos() {
+
+        List<Livro> lista = new ArrayList<>();
+
+        String sql = "SELECT titulo,capa FROM livros WHERE isDesejo=1;";
+        //String sqlCapa = "SELECT capa FROM livros WHERE isDesejo=true;";
+
+        Cursor c = dbQuery.rawQuery(sql, null);
+        //Cursor puxarCapa = dbQuery.rawQuery(sqlCapa, null);
+
+        while(c.moveToNext()){
+
+            Livro livro = new Livro();
+            String titulo = c.getString(c.getColumnIndex("titulo"));
+            byte[] capa = c.getBlob(c.getColumnIndex("capa"));
 
             livro.setTitulo(titulo);
             livro.setCapa(capa);

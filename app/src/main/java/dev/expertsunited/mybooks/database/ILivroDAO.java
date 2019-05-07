@@ -8,5 +8,6 @@ public interface ILivroDAO {
     public boolean cadastrar(Livro livro);
     public boolean alterar(Livro livro);
     public boolean deletar (Livro livro);
-    public List<Livro> listar();
+    public List<Livro> listaDeBiblioteca();
+    public List<Livro> listaDeDesejos();
 }

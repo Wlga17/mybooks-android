@@ -1,8 +1,6 @@
 package dev.expertsunited.mybooks;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -12,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dev.expertsunited.mybooks.Adapter.RecyclerViewAdapter;
@@ -22,7 +19,7 @@ import dev.expertsunited.mybooks.model.Livro;
 
 public class BibliotecaFragment extends Fragment {
 
-    List<Livro> lsLivro;
+    private List<Livro> lsLivro;
     private RecyclerView recyclerView;
 
     @Override
@@ -36,7 +33,7 @@ public class BibliotecaFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abrirOutraActivity = new Intent(getActivity(), CadastroLivroActivity.class);
+                Intent abrirOutraActivity = new Intent(getActivity(), CadastroLivroBibliotecaActivity.class);
                 startActivity(abrirOutraActivity);
             }
         });
@@ -59,7 +56,7 @@ public class BibliotecaFragment extends Fragment {
 
         LivroDAO livroDAO = new LivroDAO(getContext());
 
-        lsLivro = livroDAO.listar();
+        lsLivro = livroDAO.listaDeBiblioteca();
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(),lsLivro);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setAdapter(adapter);

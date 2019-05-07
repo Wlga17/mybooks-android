@@ -2,6 +2,7 @@ package dev.expertsunited.mybooks;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -13,25 +14,27 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import dev.expertsunited.mybooks.database.DbHelper;
+import dev.expertsunited.mybooks.database.MySharedPreference;
 import dev.expertsunited.mybooks.database.UsuarioDAO;
 import dev.expertsunited.mybooks.model.Usuario;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    //private ViewHolder mViewHolder = new ViewHolder();
     private DbHelper dbHelper;
-    //private SQLiteDatabase db;
     private Button btnCadastrar;
     private Button btnEntrar;
     private EditText edtLogin;
     private EditText edtSenha;
+    private MySharedPreference preferencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
+//      SharedPreferences preferencias = (SharedPreferences) MySharedPreference.getInstance(this);
 
         edtLogin = findViewById(R.id.edt_login);
         edtSenha = findViewById(R.id.edt_senha);
@@ -74,15 +77,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, "Login invalido! ", Toast.LENGTH_SHORT).show();
                 }
             }
+
+            //Dados Preferencias
+//            preferencias.setUserName(usuario.getLogin());
+//            preferencias.setUserId(usuario.getId());
         }
     }
-
-//    private static class ViewHolder{
-//        Button btnCadastrar;
-//        Button btnEntrar;
-//        EditText edtLogin;
-//        EditText edtSenha;
-//    }
 
 
     @Override

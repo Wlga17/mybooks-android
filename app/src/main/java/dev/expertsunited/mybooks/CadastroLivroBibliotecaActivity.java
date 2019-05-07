@@ -1,24 +1,18 @@
 package dev.expertsunited.mybooks;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,7 +23,7 @@ import java.io.ByteArrayOutputStream;
 import dev.expertsunited.mybooks.database.LivroDAO;
 import dev.expertsunited.mybooks.model.Livro;
 
-public class CadastroLivroActivity extends AppCompatActivity implements View.OnClickListener{
+public class CadastroLivroBibliotecaActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView imagem;
     private Button btnCapa;
@@ -42,7 +36,7 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_livro);
+        setContentView(R.layout.activity_cadastro_livro_biblioteca);
         getSupportActionBar().hide();
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -81,6 +75,7 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intent,galeriaImagens);
         }
+
         if (id == R.id.btn_adicionarLivro) {
             Livro livro = new Livro();
             LivroDAO dao = new LivroDAO( getApplicationContext() );
@@ -96,6 +91,9 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
             livro.setValor(Double.parseDouble(edtPreco.getText().toString()));
             livro.setIndicacao(edtIndicacao.getText().toString());
             livro.setCapa(imageBytes);
+            livro.setBiblioteca(true);
+            livro.setDesejo(false);
+            livro.setLidos(false);
 
             if (livro.getTitulo().equals("") || livro.getAutor().equals("")) {
                 Toast.makeText(this, "Preecher o Titulo e o Autor", Toast.LENGTH_SHORT).show();
@@ -103,13 +101,16 @@ public class CadastroLivroActivity extends AppCompatActivity implements View.OnC
                 boolean result = dao.cadastrar(livro);
                 if (result == true) {
                     Toast.makeText(this, "Livro cadastrado! ", Toast.LENGTH_SHORT).show();
+                    finish();
                 }else {
                     Toast.makeText(this, "Erro no cadastro! ", Toast.LENGTH_SHORT).show();
                 }
             }
-
         }
 
+        if (id == R.id.btn_cancelarLivro) {
+            finish();
+        }
     }
 
 

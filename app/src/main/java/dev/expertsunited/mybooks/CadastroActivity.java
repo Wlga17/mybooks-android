@@ -14,8 +14,6 @@ import dev.expertsunited.mybooks.model.Usuario;
 
 public class CadastroActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //private ViewHolder mViewHolder = new ViewHolder();
-    //private SQLiteDatabase db;
     private DbHelper dbHelper;
     private EditText txtNome;
     private EditText txtEmail;
@@ -61,6 +59,7 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
                boolean result = dao.cadastrar(usuario);
                if (result == true) {
                    Toast.makeText(this, "Cadastrado com sucesso! ", Toast.LENGTH_SHORT).show();
+                   finish();
                }else {
                    Toast.makeText(this, "Erro ao cadastrar! ", Toast.LENGTH_SHORT).show();
                }
@@ -71,35 +70,6 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
            startActivity(intent);
        }
     }
-
-//    public void salvarUsuario(Usuario usuario) {
-//        db = dbHelper.getWritableDatabase();
-//
-//        ContentValues novoUsuario = new ContentValues();
-//
-//        novoUsuario.put("nome", usuario.getNome());
-//        novoUsuario.put("email", usuario.getEmail());
-//        novoUsuario.put("login", usuario.getLogin());
-//        novoUsuario.put("senha", usuario.getSenha());
-//
-//        long resultado = db.insert("usuarios", null, novoUsuario);
-//        if (resultado > 0)    {
-//            Toast.makeText(this, "Cadastrado com sucesso! ", Toast.LENGTH_SHORT).show();
-//        }else {
-//            Toast.makeText(this, "Erro ao cadastrar! ", Toast.LENGTH_SHORT).show();
-//        }
-//        dbHelper.close();
-//    }
-
-//    public static class ViewHolder {
-//        EditText txtNome;
-//        EditText txtEmail;
-//        EditText txtLogin;
-//        EditText txtSenha;
-//        Button btnCriarConta;
-//        Button btnCancelar;
-//    }
-
 
     @Override
     protected void onDestroy() {
