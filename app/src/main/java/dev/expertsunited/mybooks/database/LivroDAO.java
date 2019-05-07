@@ -2,9 +2,11 @@ package dev.expertsunited.mybooks.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dev.expertsunited.mybooks.model.Livro;
@@ -57,6 +59,22 @@ public class LivroDAO implements ILivroDAO{
 
     @Override
     public List<Livro> listar() {
-        return null;
+        List<Livro> lista = new ArrayList<>();
+
+        String sql = "SELECT titulo FROM livros;";
+
+        Cursor c = dbQuery.rawQuery(sql, null);
+
+        while(c.moveToNext()){
+
+            Livro livro = new Livro();
+            String titulo = c.getString(c.getColumnIndex("titulo"));
+
+            livro.setTitulo(titulo);
+            lista.add(livro);
+        }
+
+        return lista;
+
     }
 }

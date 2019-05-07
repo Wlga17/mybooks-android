@@ -13,6 +13,21 @@ public class Livro {
     private boolean isDesejo;
     private boolean isLidos;
 
+    public Livro(Double id, String titulo, String autor, String editora, String edicao, String indicacao, Double valor, byte[] capa, boolean isBiblioteca, boolean isDesejo, boolean isLidos) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editora = editora;
+        this.edicao = edicao;
+        this.indicacao = indicacao;
+        this.valor = valor;
+        this.capa = capa;
+        this.isBiblioteca = isBiblioteca;
+        this.isDesejo = isDesejo;
+        this.isLidos = isLidos;
+    }
+
+
     public Livro() {
 
     }
