@@ -32,4 +32,8 @@
     <string name="quantidadeLivrosBiblioteca">Você tem 0 livros em sua biblioteca</string>
     <string name="lidos">Livros Lidos</string>
     <string name="quantidadeLivrosLidos">Você leu 0 livros</string>
+    <string name="voltar">Voltar</string>
+    <string name="excluirLivro">Excluir livro</string>
+    <string name="AdicionarBiblioteca">Adicionar a biblioteca</string>
+    <string name="editarLivro">Editar livro</string>
 </resources>

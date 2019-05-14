@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -21,11 +22,13 @@ public class ListaDesejosFragment extends Fragment {
 
     private List<Livro> lsLivro;
     private RecyclerView recyclerView;
+    private TextView textoQtd;
+    private int contador;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         final View view = inflater.inflate(R.layout.fragment_lista_desejos, container, false);
 
         FloatingActionButton fab = view.findViewById(R.id.btn_add);
@@ -38,11 +41,12 @@ public class ListaDesejosFragment extends Fragment {
             }
         });
         recyclerView = view.findViewById(R.id.recycleId_desejos);
+        textoQtd = view.findViewById(R.id.qtdLivrosDesejos);
         return view;
     }
 
     public static ListaDesejosFragment newInstance() {
-        // Required empty public constructor
+
         return new ListaDesejosFragment();
     }
 
@@ -50,6 +54,7 @@ public class ListaDesejosFragment extends Fragment {
     public void onStart() {
         super.onStart();
         carregarLista();
+        textoQtd.setText("Você tem " + contador + " livros em sua lista de desejos");
     }
 
     public void carregarLista(){
@@ -60,5 +65,6 @@ public class ListaDesejosFragment extends Fragment {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(),lsLivro);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setAdapter(adapter);
+        contador = lsLivro.size();
     }
 }

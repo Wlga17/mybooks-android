@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String result = dao.validarLogin(login, senha);
 
                 if (result.equals("OK")) {
-                    Toast.makeText(this, "Login OK! ", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, PrincipalActivity.class);
                     startActivity(intent);
                 }else {

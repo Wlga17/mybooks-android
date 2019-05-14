@@ -9,10 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
-import dev.expertsunited.mybooks.Adapter.RecyclerViewAdapter;
+import dev.expertsunited.mybooks.Adapter.RecyclerViewAdapterBiblioteca;
 import dev.expertsunited.mybooks.database.LivroDAO;
 import dev.expertsunited.mybooks.model.Livro;
 
@@ -21,11 +22,13 @@ public class BibliotecaFragment extends Fragment {
 
     private List<Livro> lsLivro;
     private RecyclerView recyclerView;
+    private TextView textoQtd;
+    private int contador;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         final View view = inflater.inflate(R.layout.fragment_biblioteca, container, false);
 
         FloatingActionButton fab = view.findViewById(R.id.btn_add);
@@ -38,11 +41,12 @@ public class BibliotecaFragment extends Fragment {
             }
         });
         recyclerView = view.findViewById(R.id.recycleId_biblioteca);
+        textoQtd = view.findViewById(R.id.qtdLivrosBiblioteca);
         return view;
     }
 
     public static BibliotecaFragment newInstace() {
-        // Required empty public constructor
+
         return new BibliotecaFragment();
     }
 
@@ -50,6 +54,7 @@ public class BibliotecaFragment extends Fragment {
     public void onStart() {
         super.onStart();
         carregarLista();
+        textoQtd.setText("Você tem " + contador + " livros em sua Biblioteca");
     }
 
     public void carregarLista(){
@@ -57,9 +62,10 @@ public class BibliotecaFragment extends Fragment {
         LivroDAO livroDAO = new LivroDAO(getContext());
 
         lsLivro = livroDAO.listaDeBiblioteca();
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(),lsLivro);
+        RecyclerViewAdapterBiblioteca adapter = new RecyclerViewAdapterBiblioteca(getContext(),lsLivro);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recyclerView.setAdapter(adapter);
+        contador = lsLivro.size();
     }
 
 }

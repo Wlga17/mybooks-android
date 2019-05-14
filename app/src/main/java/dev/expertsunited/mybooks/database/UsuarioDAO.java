@@ -53,4 +53,10 @@ public class UsuarioDAO implements IUsuarioDAO{
         }
         return "ERRO";
     }
+
+    @Override
+    public String pegarId(String login, String senha) {
+        Cursor c = dbQuery.rawQuery("SELECT _id FROM usuarios WHERE login=? AND senha=?", new String[] {login, senha});
+        return c.toString();
+    }
 }

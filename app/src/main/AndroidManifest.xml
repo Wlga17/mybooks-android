@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CadastroLivroDesejosActivity"></activity>
+        <activity android:name=".DetalheBibliotecaActivity"></activity>
+        <activity android:name=".DetalheLivroDesejosActivity" />
+        <activity android:name=".CadastroLivroDesejosActivity" />
         <activity android:name=".PrincipalActivity" />
         <activity android:name=".CadastroLivroBibliotecaActivity" />
         <activity android:name=".MainActivity">

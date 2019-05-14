@@ -53,27 +53,33 @@ public class LivroDAO implements ILivroDAO{
     }
 
     @Override
-    public boolean deletar(Livro livro) {
-        return false;
+    public void deletar(String mTitulo) {
+        db.execSQL("DELETE FROM livros WHERE titulo = " + mTitulo);
     }
 
     @Override
     public List<Livro> listaDeBiblioteca() {
         List<Livro> lista = new ArrayList<>();
 
-        String sql = "SELECT titulo,capa FROM livros WHERE isBiblioteca=1;";
-        //String sqlCapa = "SELECT capa FROM livros WHERE isBiblioteca=true;";
+        String sql = "SELECT titulo,capa,autor,editora,edicao,preco FROM livros WHERE isBiblioteca=1;";
 
         Cursor c = dbQuery.rawQuery(sql, null);
-        //Cursor puxarCapa = dbQuery.rawQuery(sqlCapa, null);
 
         while(c.moveToNext()){
 
             Livro livro = new Livro();
             String titulo = c.getString(c.getColumnIndex("titulo"));
+            String autor = c.getString(c.getColumnIndex("autor"));
+            String edicao = c.getString(c.getColumnIndex("edicao"));
+            String editora = c.getString(c.getColumnIndex("editora"));
+            Double preco = c.getDouble(c.getColumnIndex("preco"));
             byte[] capa = c.getBlob(c.getColumnIndex("capa"));
 
             livro.setTitulo(titulo);
+            livro.setAutor(autor);
+            livro.setEdicao(edicao);
+            livro.setEditora(editora);
+            livro.setValor(preco);
             livro.setCapa(capa);
             lista.add(livro);
 
@@ -88,19 +94,25 @@ public class LivroDAO implements ILivroDAO{
 
         List<Livro> lista = new ArrayList<>();
 
-        String sql = "SELECT titulo,capa FROM livros WHERE isDesejo=1;";
-        //String sqlCapa = "SELECT capa FROM livros WHERE isDesejo=true;";
+        String sql = "SELECT titulo,capa,autor,editora,edicao,preco FROM livros WHERE isDesejo=1;";
 
         Cursor c = dbQuery.rawQuery(sql, null);
-        //Cursor puxarCapa = dbQuery.rawQuery(sqlCapa, null);
 
         while(c.moveToNext()){
 
             Livro livro = new Livro();
             String titulo = c.getString(c.getColumnIndex("titulo"));
+            String autor = c.getString(c.getColumnIndex("autor"));
+            String edicao = c.getString(c.getColumnIndex("edicao"));
+            String editora = c.getString(c.getColumnIndex("editora"));
+            Double preco = c.getDouble(c.getColumnIndex("preco"));
             byte[] capa = c.getBlob(c.getColumnIndex("capa"));
 
             livro.setTitulo(titulo);
+            livro.setAutor(autor);
+            livro.setEdicao(edicao);
+            livro.setEditora(editora);
+            livro.setValor(preco);
             livro.setCapa(capa);
             lista.add(livro);
 

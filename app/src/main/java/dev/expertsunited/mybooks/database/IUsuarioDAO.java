@@ -7,5 +7,6 @@ public interface IUsuarioDAO {
     public boolean cadastrar (Usuario usuario);
     public boolean atualizar (Usuario usuario);
     public String validarLogin (String login, String senha);
+    public  String pegarId(String login, String senha);
 
 }

@@ -30,6 +30,7 @@
             android:layout_height="143dp"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="37dp"
+            android:src="@drawable/padrao"
             android:background="@color/cardview_dark_background"/>
 
         <Button
@@ -119,7 +120,7 @@
         android:textColorHint="@color/textoHint"
         android:textColor="@color/detalheLaranja"
         android:padding="12dp"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         android:background="@drawable/edit_text_style"/>
 
     <LinearLayout

@@ -85,30 +85,36 @@ public class CadastroLivroDesejosActivity extends AppCompatActivity implements V
         if (id == R.id.btn_adicionarLivro) {
             Livro livro = new Livro();
             LivroDAO dao = new LivroDAO( getApplicationContext() );
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            byte imageBytes[] = stream.toByteArray();
 
-            livro.setTitulo(edtTitulo.getText().toString());
-            livro.setAutor(edtAutor.getText().toString());
-            livro.setEditora(edtEditora.getText().toString());
-            livro.setEdicao(edtEdicao.getText().toString());
-            livro.setValor(Double.parseDouble(edtPreco.getText().toString()));
-            livro.setIndicacao(edtIndicacao.getText().toString());
-            livro.setCapa(imageBytes);
-            livro.setBiblioteca(false);
-            livro.setDesejo(true);
-            livro.setLidos(false);
+            if(thumbnail == null){
 
-            if (livro.getTitulo().equals("") || livro.getAutor().equals("")) {
-                Toast.makeText(this, "Preecher o Titulo e o Autor", Toast.LENGTH_SHORT).show();
-            }else {
-                boolean result = dao.cadastrar(livro);
-                if (result == true) {
-                    Toast.makeText(this, "Livro cadastrado! ", Toast.LENGTH_SHORT).show();
-                    finish();
+                Toast.makeText(this, "Adicionar capa", Toast.LENGTH_SHORT).show();
+
+            }else{
+
+                if (edtTitulo.getText().toString().equals("") || edtAutor.getText().toString().equals("") || edtEdicao.getText().toString().equals("") || edtEditora.getText().toString().equals("") || edtIndicacao.getText().toString().equals("") || edtPreco.getText().toString().equals("")) {
+                    Toast.makeText(this, "Preecha todos os campos", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(this, "Erro no cadastro! ", Toast.LENGTH_SHORT).show();
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                    byte imageBytes[] = stream.toByteArray();
+                    livro.setCapa(imageBytes);
+                    livro.setTitulo(edtTitulo.getText().toString());
+                    livro.setAutor(edtAutor.getText().toString());
+                    livro.setEditora(edtEditora.getText().toString());
+                    livro.setEdicao(edtEdicao.getText().toString());
+                    livro.setValor(Double.parseDouble(edtPreco.getText().toString()));
+                    livro.setIndicacao(edtIndicacao.getText().toString());
+                    livro.setBiblioteca(false);
+                    livro.setDesejo(true);
+                    livro.setLidos(false);
+                    boolean result = dao.cadastrar(livro);
+                    if (result == true) {
+                        Toast.makeText(this, "Livro cadastrado! ", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else {
+                        Toast.makeText(this, "Erro no cadastro! ", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }

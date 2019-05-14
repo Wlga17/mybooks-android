@@ -12,36 +12,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
+import dev.expertsunited.mybooks.CadastroLivroBibliotecaActivity;
+import dev.expertsunited.mybooks.DetalheBibliotecaActivity;
 import dev.expertsunited.mybooks.DetalheLivroDesejosActivity;
 import dev.expertsunited.mybooks.R;
 import dev.expertsunited.mybooks.model.Livro;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class RecyclerViewAdapterBiblioteca extends RecyclerView.Adapter<RecyclerViewAdapterBiblioteca.MyViewHolder>{
 
     private Context mContext;
     private List<Livro> mList;
 
-    public RecyclerViewAdapter(Context mContext, List<Livro> mData) {
+    public RecyclerViewAdapterBiblioteca(Context mContext, List<Livro> mData) {
         this.mContext = mContext;
         this.mList = mData;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
+    public RecyclerViewAdapterBiblioteca.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view;
         LayoutInflater mInflater = LayoutInflater.from(mContext);
-        view = mInflater.inflate(R.layout.card_view_book_desejos,viewGroup,false);
+        view = mInflater.inflate(R.layout.card_view_book_biblioteca,viewGroup,false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
+    public void onBindViewHolder(@NonNull RecyclerViewAdapterBiblioteca.MyViewHolder myViewHolder, final int i) {
 
         byte[] saidaImagem = mList.get(i).getCapa();
         ByteArrayInputStream imageStream = new ByteArrayInputStream(saidaImagem);
@@ -51,7 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         myViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, DetalheLivroDesejosActivity.class);
+                Intent intent = new Intent(mContext, DetalheBibliotecaActivity.class);
 
                 intent.putExtra("capa", mList.get(i).getCapa());
                 intent.putExtra("titulo", mList.get(i).getTitulo());
@@ -67,9 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public int getItemCount() {
-        return mList.size();
-    }
+    public int getItemCount() { return mList.size(); }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
@@ -79,9 +77,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            livro_capa = itemView.findViewById(R.id.imgLivroId);
-            cardView = itemView.findViewById(R.id.cardViewId);
-
+            livro_capa = itemView.findViewById(R.id.imgLivroBibliotecaId);
+            cardView = itemView.findViewById(R.id.cardViewBibliotecaId);
         }
     }
 

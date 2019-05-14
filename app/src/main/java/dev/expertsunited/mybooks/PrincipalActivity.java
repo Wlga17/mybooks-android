@@ -21,6 +21,15 @@ public class PrincipalActivity extends AppCompatActivity implements BottomNaviga
         navigationView = (BottomNavigationView) findViewById(R.id.navigationView);
         navigationView.setOnNavigationItemSelectedListener(this);
 
+        Fragment fragment = ListaDesejosFragment.newInstance();
+        openFragment(fragment);
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getSupportActionBar().hide();
     }
 
     @Override
@@ -30,22 +39,22 @@ public class PrincipalActivity extends AppCompatActivity implements BottomNaviga
 
             case R.id.menu_desejos:{
                 getSupportActionBar().hide();
-                Fragment musicasFragment = ListaDesejosFragment.newInstance();
-                openFragment(musicasFragment);
+                Fragment fragment = ListaDesejosFragment.newInstance();
+                openFragment(fragment);
                 break;
             }
 
             case R.id.menu_biblioteca:{
                 getSupportActionBar().hide();
-                Fragment musicasFragment = BibliotecaFragment.newInstace();
-                openFragment(musicasFragment);
+                Fragment fragment = BibliotecaFragment.newInstace();
+                openFragment(fragment);
                 break;
             }
 
             case R.id.menu_lidos:{
                 getSupportActionBar().hide();
-                Fragment musicasFragment = LidosFragment.newInstance();
-                openFragment(musicasFragment);
+                Fragment fragment = LidosFragment.newInstance();
+                openFragment(fragment);
                 break;
             }
 
