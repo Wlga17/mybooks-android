@@ -34,14 +34,15 @@
             android:textSize="14dp"
             android:textColor="@color/textoHint"/>
 
-        <TextView
+        <EditText
             android:id="@+id/tituloDetalheBibliotecaId"
-            android:layout_width="wrap_content"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="21dp"
             android:textSize="16dp"
-            android:textColor="@color/detalheLaranja"/>
+            android:textColor="@color/detalheLaranja"
+            android:background="@drawable/edit_text_style"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,14 +53,15 @@
             android:textSize="14dp"
             android:textColor="@color/textoHint"/>
 
-        <TextView
+        <EditText
             android:id="@+id/autorDetalheBibliotecaId"
-            android:layout_width="wrap_content"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="21dp"
             android:textSize="16dp"
-            android:textColor="@color/detalheLaranja"/>
+            android:textColor="@color/detalheLaranja"
+            android:background="@drawable/edit_text_style"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,14 +72,15 @@
             android:textSize="14dp"
             android:textColor="@color/textoHint"/>
 
-        <TextView
+        <EditText
             android:id="@+id/edicaoDetalheBibliotecaId"
-            android:layout_width="wrap_content"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="21dp"
             android:textSize="16dp"
-            android:textColor="@color/detalheLaranja"/>
+            android:textColor="@color/detalheLaranja"
+            android:background="@drawable/edit_text_style"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,14 +91,15 @@
             android:textSize="14dp"
             android:textColor="@color/textoHint"/>
 
-        <TextView
+        <EditText
             android:id="@+id/editoraDetalheBibliotecaId"
-            android:layout_width="wrap_content"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="21dp"
             android:textSize="16dp"
-            android:textColor="@color/detalheLaranja"/>
+            android:textColor="@color/detalheLaranja"
+            android:background="@drawable/edit_text_style"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -106,14 +110,15 @@
             android:textSize="14dp"
             android:textColor="@color/textoHint"/>
 
-        <TextView
+        <EditText
             android:id="@+id/precoDetalheBibliotecaId"
-            android:layout_width="wrap_content"
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="21dp"
             android:textSize="16dp"
-            android:textColor="@color/detalheLaranja"/>
+            android:textColor="@color/detalheLaranja"
+            android:background="@drawable/edit_text_style"/>
 
 
         <LinearLayout
@@ -123,6 +128,7 @@
             android:gravity="center">
 
             <Button
+                android:id="@+id/btn_voltarDetalhe_id"
                 android:layout_width="135dp"
                 android:layout_height="50dp"
                 android:text="@string/voltar"
@@ -143,6 +149,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btn_editarDetalhe_id"
             android:layout_width="305dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"

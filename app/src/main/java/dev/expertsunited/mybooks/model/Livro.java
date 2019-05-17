@@ -1,7 +1,7 @@
 package dev.expertsunited.mybooks.model;
 
 public class Livro {
-    private Double id;
+    private Integer id;
     private String titulo;
     private String autor;
     private String editora;
@@ -13,7 +13,7 @@ public class Livro {
     private boolean isDesejo;
     private boolean isLidos;
 
-    public Livro(Double id, String titulo, String autor, String editora, String edicao, String indicacao, Double valor, byte[] capa, boolean isBiblioteca, boolean isDesejo, boolean isLidos) {
+    public Livro(Integer id, String titulo, String autor, String editora, String edicao, String indicacao, Double valor, byte[] capa, boolean isBiblioteca, boolean isDesejo, boolean isLidos) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
@@ -32,11 +32,11 @@ public class Livro {
 
     }
 
-    public Double getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

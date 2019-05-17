@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,8 +20,9 @@ import dev.expertsunited.mybooks.model.Livro;
 public class DetalheBibliotecaActivity extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView ivCapa;
-    private TextView tvTitulo, tvAutor, tvEdicao, tvEditora, tvPreco;
-    private Button btnExcluir;
+    private EditText tvTitulo, tvAutor, tvEdicao, tvEditora, tvPreco;
+    private Button btnExcluir, btnVoltar, btnEditar;
+    private int idNumero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,28 +37,38 @@ public class DetalheBibliotecaActivity extends AppCompatActivity implements View
         tvEditora = findViewById(R.id.editoraDetalheBibliotecaId);
         tvPreco = findViewById(R.id.precoDetalheBibliotecaId);
         btnExcluir = findViewById(R.id.btn_excluir_livro);
+        btnVoltar = findViewById(R.id.btn_voltarDetalhe_id);
+        btnEditar = findViewById(R.id.btn_editarDetalhe_id);
 
         btnExcluir.setOnClickListener(this);
+        btnEditar.setOnClickListener(this);
+        btnVoltar.setOnClickListener(this);
 
 
         Intent intent = getIntent();
 
+        Integer id = intent.getExtras().getInt("id");
         byte[] capa = intent.getExtras().getByteArray("capa");
         String titulo = intent.getExtras().getString("titulo");
         String autor = intent.getExtras().getString("autor");
         String edicao = intent.getExtras().getString("edicao");
         String editora = intent.getExtras().getString("editora");
         Double preco = intent.getExtras().getDouble("preco");
+        boolean biblioteca = intent.getExtras().getBoolean("biblioteca");
+        boolean desejo = intent.getExtras().getBoolean("desejos");
+        boolean lidos = intent.getExtras().getBoolean("lidos");
 
         ByteArrayInputStream imageStream = new ByteArrayInputStream(capa);
         Bitmap imagemBitmap = BitmapFactory.decodeStream(imageStream);
+
+        idNumero = id;
 
         ivCapa.setImageBitmap(imagemBitmap);
         tvTitulo.setText(titulo);
         tvAutor.setText(autor);
         tvEdicao.setText(edicao);
         tvEditora.setText(editora);
-        tvPreco.setText("R$ "+ preco.toString());
+        tvPreco.setText(preco.toString());
 
     }
 
@@ -68,6 +80,23 @@ public class DetalheBibliotecaActivity extends AppCompatActivity implements View
 
             LivroDAO dao = new LivroDAO( getApplicationContext() );
             dao.deletar(tvTitulo.getText().toString());
+            finish();
+        }
+
+        if(id == R.id.btn_voltarDetalhe_id){
+            finish();
+        }
+
+        if(id == R.id.btn_editarDetalhe_id){
+            LivroDAO dao = new LivroDAO(getApplicationContext());
+            Livro l = new Livro();
+            l.setId(idNumero);
+            l.setTitulo(tvTitulo.getText().toString());
+            l.setAutor(tvAutor.getText().toString());
+            l.setEditora(tvEditora.getText().toString());
+            l.setEdicao(tvEdicao.getText().toString());
+            l.setValor(Double.parseDouble(tvPreco.getText().toString()));
+            dao.alterar(l);
             finish();
         }
 

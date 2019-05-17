@@ -49,12 +49,36 @@ public class LivroDAO implements ILivroDAO{
 
     @Override
     public boolean alterar(Livro livro) {
-        return false;
+
+
+        ContentValues cv = new ContentValues();
+        cv.put("titulo", livro.getTitulo());
+        cv.put("autor", livro.getAutor());
+        cv.put("editora", livro.getEditora());
+        cv.put("edicao", livro.getEdicao());
+        cv.put("indicacao", livro.getIndicacao());
+        cv.put("preco", livro.getValor());
+        //cv.put("capa", livro.getCapa());
+        cv.put("isBiblioteca", livro.isBiblioteca());
+        cv.put("isDesejo", livro.isDesejo());
+        cv.put("isLidos", livro.isLidos());
+
+        try {
+
+            String[] dados = {livro.getId().toString()};
+            db.update("livros", cv, "id = ?", dados);
+
+        }catch (Exception e){
+            return false;
+        }
+
+        return true;
     }
 
     @Override
     public void deletar(String mTitulo) {
-        db.execSQL("DELETE FROM livros WHERE titulo = " + mTitulo);
+        String[] dados = {mTitulo};
+        db.delete("livros", "titulo = ?", dados);
     }
 
     @Override
