@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/Excluir"
+            android:textColor="@color/detalheLaranja"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btn_cancelar_alert"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="@string/cancelar"
+                android:textColor="@color/detalheLaranja"
+                android:background="@drawable/botao_branco"/>
+
+            <Button
+                android:id="@+id/btn_excluir_alert"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/botao_laranja"
+                android:text="@string/ExcluirBotao"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

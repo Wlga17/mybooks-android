@@ -36,4 +36,6 @@
     <string name="excluirLivro">Excluir livro</string>
     <string name="AdicionarBiblioteca">Adicionar a biblioteca</string>
     <string name="editarLivro">Editar livro</string>
+    <string name="Excluir">Você quer mesmo excluir esse livro?</string>
+    <string name="ExcluirBotao">Excluir</string>
 </resources>

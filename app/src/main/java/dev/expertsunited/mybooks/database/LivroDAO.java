@@ -58,13 +58,13 @@ public class LivroDAO implements ILivroDAO{
         cv.put("edicao", livro.getEdicao());
         cv.put("indicacao", livro.getIndicacao());
         cv.put("preco", livro.getValor());
+        cv.put("id", livro.getId());
         //cv.put("capa", livro.getCapa());
-        cv.put("isBiblioteca", livro.isBiblioteca());
-        cv.put("isDesejo", livro.isDesejo());
-        cv.put("isLidos", livro.isLidos());
+        //cv.put("isBiblioteca", livro.isBiblioteca());
+        //cv.put("isDesejo", livro.isDesejo());
+        //cv.put("isLidos", livro.isLidos());\
 
         try {
-
             String[] dados = {livro.getId().toString()};
             db.update("livros", cv, "id = ?", dados);
 
