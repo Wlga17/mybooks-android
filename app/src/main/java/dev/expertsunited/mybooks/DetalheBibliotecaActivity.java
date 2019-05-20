@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -24,7 +25,7 @@ public class DetalheBibliotecaActivity extends AppCompatActivity implements View
     private ImageView ivCapa;
     private EditText tvTitulo, tvAutor, tvEdicao, tvEditora, tvPreco;
     private Button btnExcluir, btnVoltar, btnEditar;
-    private Integer idNumero;
+    private Livro livroAtual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,30 +48,43 @@ public class DetalheBibliotecaActivity extends AppCompatActivity implements View
         btnVoltar.setOnClickListener(this);
 
 
-        Intent intent = getIntent();
+        livroAtual = (Livro) getIntent().getSerializableExtra("livroSelecionado");
 
-        Integer id = intent.getExtras().getInt("id");
-        byte[] capa = intent.getExtras().getByteArray("capa");
-        String titulo = intent.getExtras().getString("titulo");
-        String autor = intent.getExtras().getString("autor");
-        String edicao = intent.getExtras().getString("edicao");
-        String editora = intent.getExtras().getString("editora");
-        Double preco = intent.getExtras().getDouble("preco");
-        boolean biblioteca = intent.getExtras().getBoolean("biblioteca");
-        boolean desejo = intent.getExtras().getBoolean("desejos");
-        boolean lidos = intent.getExtras().getBoolean("lidos");
-
+        byte[] capa = livroAtual.getCapa();
         ByteArrayInputStream imageStream = new ByteArrayInputStream(capa);
         Bitmap imagemBitmap = BitmapFactory.decodeStream(imageStream);
 
-        idNumero = id;
-
+//        aux = livroAtual.getId();
         ivCapa.setImageBitmap(imagemBitmap);
-        tvTitulo.setText(titulo);
-        tvAutor.setText(autor);
-        tvEdicao.setText(edicao);
-        tvEditora.setText(editora);
-        tvPreco.setText(preco.toString());
+        tvTitulo.setText(livroAtual.getTitulo());
+        tvAutor.setText(livroAtual.getAutor());
+        tvEdicao.setText(livroAtual.getEdicao());
+        tvEditora.setText(livroAtual.getEditora());
+        tvPreco.setText(livroAtual.getValor().toString());
+
+//        Intent intent = getIntent();
+
+//        Integer id = intent.getExtras().getInt("id");
+//        byte[] capa = intent.getExtras().getByteArray("capa");
+//        String titulo = intent.getExtras().getString("titulo");
+//        String autor = intent.getExtras().getString("autor");
+//        String edicao = intent.getExtras().getString("edicao");
+//        String editora = intent.getExtras().getString("editora");
+//        Double preco = intent.getExtras().getDouble("preco");
+//        boolean biblioteca = intent.getExtras().getBoolean("biblioteca");
+//        boolean desejo = intent.getExtras().getBoolean("desejos");
+//        boolean lidos = intent.getExtras().getBoolean("lidos");
+
+//        ByteArrayInputStream imageStream = new ByteArrayInputStream(capa);
+//        Bitmap imagemBitmap = BitmapFactory.decodeStream(imageStream);
+
+//        idNumero = id;
+//        ivCapa.setImageBitmap(imagemBitmap);
+//        tvTitulo.setText(titulo);
+//        tvAutor.setText(autor);
+//        tvEdicao.setText(edicao);
+//        tvEditora.setText(editora);
+//        tvPreco.setText(preco.toString());
 
     }
 
@@ -100,7 +114,7 @@ public class DetalheBibliotecaActivity extends AppCompatActivity implements View
                 LivroDAO dao = new LivroDAO( getApplicationContext() );
                 dao.deletar(tvTitulo.getText().toString());
                 dialog.dismiss();
-                Intent intent = new Intent(getApplicationContext() ,DetalheBibliotecaActivity.class);
+                Intent intent = new Intent(getApplicationContext() , BibliotecaFragment.class);
                 startActivity(intent);
 
             }
@@ -125,24 +139,34 @@ public class DetalheBibliotecaActivity extends AppCompatActivity implements View
 
         if(id == R.id.btn_editarDetalhe_id){
 
-            EditText titulo = findViewById(R.id.tituloDetalheBibliotecaId);
-            EditText autor = findViewById(R.id.autorDetalheBibliotecaId);
-            EditText editora = findViewById(R.id.editoraDetalheBibliotecaId);
-            EditText edicao = findViewById(R.id.edicaoDetalheBibliotecaId);
-            EditText preco = findViewById(R.id.precoDetalheBibliotecaId);
+//            EditText titulo = findViewById(R.id.tituloDetalheBibliotecaId);
+//            EditText autor = findViewById(R.id.autorDetalheBibliotecaId);
+//            EditText editora = findViewById(R.id.editoraDetalheBibliotecaId);
+//            EditText edicao = findViewById(R.id.edicaoDetalheBibliotecaId);
+//            EditText preco = findViewById(R.id.precoDetalheBibliotecaId);
+//            idNumero = 1;
 
-
-            idNumero = 1;
             LivroDAO dao = new LivroDAO(getApplicationContext());
+            String titulo = tvTitulo.getText().toString().trim();
+            String autor = tvAutor.getText().toString().trim();
+            String edicao = tvEdicao.getText().toString().trim();
+            String editora = tvEditora.getText().toString().trim();
+            Double preco = Double.parseDouble(tvPreco.getText().toString().trim());
+
             Livro l = new Livro();
-            l.setId(idNumero);
-            l.setTitulo(titulo.getText().toString());
-            l.setAutor(autor.getText().toString());
-            l.setEditora(editora.getText().toString());
-            l.setEdicao(edicao.getText().toString());
-            l.setValor(Double.parseDouble(preco.getText().toString()));
-            dao.alterar(l);
-            finish();
+            l.setTitulo( titulo );
+            l.setAutor( autor );
+            l.setEdicao( edicao );
+            l.setEditora( editora );
+            l.setValor( preco );
+            l.setId( livroAtual.getId() );
+
+            if (dao.alterar(l)) {
+                finish();
+                Toast.makeText(this, "Atualizado com sucesso! ", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, "Erro ao atualizar! ", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

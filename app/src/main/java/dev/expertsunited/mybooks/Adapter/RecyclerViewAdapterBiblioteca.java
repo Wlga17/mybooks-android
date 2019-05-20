@@ -51,18 +51,22 @@ public class RecyclerViewAdapterBiblioteca extends RecyclerView.Adapter<Recycler
         myViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Livro livroSelecionado = mList.get(i);
+
                 Intent intent = new Intent(mContext, DetalheBibliotecaActivity.class);
 
-                intent.putExtra("id", mList.get(i).getId());
-                intent.putExtra("capa", mList.get(i).getCapa());
-                intent.putExtra("titulo", mList.get(i).getTitulo());
-                intent.putExtra("autor", mList.get(i).getAutor());
-                intent.putExtra("edicao", mList.get(i).getEdicao());
-                intent.putExtra("editora", mList.get(i).getEditora());
-                intent.putExtra("preco", mList.get(i).getValor());
-                intent.putExtra("biblioteca", mList.get(i).isBiblioteca());
-                intent.putExtra("desejos", mList.get(i).isDesejo());
-                intent.putExtra("lidos", mList.get(i).isLidos());
+                intent.putExtra("livroSelecionado", livroSelecionado);
+//                intent.putExtra("id", mList.get(i).getId());
+//                intent.putExtra("capa", mList.get(i).getCapa());
+//                intent.putExtra("titulo", mList.get(i).getTitulo());
+//                intent.putExtra("autor", mList.get(i).getAutor());
+//                intent.putExtra("edicao", mList.get(i).getEdicao());
+//                intent.putExtra("editora", mList.get(i).getEditora());
+//                intent.putExtra("preco", mList.get(i).getValor());
+//                intent.putExtra("biblioteca", mList.get(i).isBiblioteca());
+//                intent.putExtra("desejos", mList.get(i).isDesejo());
+//                intent.putExtra("lidos", mList.get(i).isLidos());
 
                 mContext.startActivity(intent);
             }

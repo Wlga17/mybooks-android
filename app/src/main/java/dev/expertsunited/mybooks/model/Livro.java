@@ -1,11 +1,13 @@
 package dev.expertsunited.mybooks.model;
 
-public class Livro {
+import java.io.Serializable;
+
+public class Livro implements Serializable {
     private Integer id;
     private String titulo;
     private String autor;
-    private String editora;
     private String edicao;
+    private String editora;
     private String indicacao;
     private Double valor;
     private byte[] capa;
@@ -13,12 +15,12 @@ public class Livro {
     private boolean isDesejo;
     private boolean isLidos;
 
-    public Livro(Integer id, String titulo, String autor, String editora, String edicao, String indicacao, Double valor, byte[] capa, boolean isBiblioteca, boolean isDesejo, boolean isLidos) {
+    public Livro(Integer id, String titulo, String autor, String edicao, String editora, String indicacao, Double valor, byte[] capa, boolean isBiblioteca, boolean isDesejo, boolean isLidos) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
-        this.editora = editora;
         this.edicao = edicao;
+        this.editora = editora;
         this.indicacao = indicacao;
         this.valor = valor;
         this.capa = capa;
@@ -56,20 +58,20 @@ public class Livro {
         this.autor = autor;
     }
 
-    public String getEditora() {
-        return editora;
-    }
-
-    public void setEditora(String editora) {
-        this.editora = editora;
-    }
-
     public String getEdicao() {
         return edicao;
     }
 
     public void setEdicao(String edicao) {
         this.edicao = edicao;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
     }
 
     public String getIndicacao() {

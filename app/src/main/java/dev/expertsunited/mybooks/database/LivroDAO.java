@@ -54,19 +54,19 @@ public class LivroDAO implements ILivroDAO{
         ContentValues cv = new ContentValues();
         cv.put("titulo", livro.getTitulo());
         cv.put("autor", livro.getAutor());
-        cv.put("editora", livro.getEditora());
         cv.put("edicao", livro.getEdicao());
-        cv.put("indicacao", livro.getIndicacao());
+        cv.put("editora", livro.getEditora());
+//        cv.put("indicacao", livro.getIndicacao());
         cv.put("preco", livro.getValor());
-        cv.put("id", livro.getId());
-        //cv.put("capa", livro.getCapa());
-        //cv.put("isBiblioteca", livro.isBiblioteca());
-        //cv.put("isDesejo", livro.isDesejo());
-        //cv.put("isLidos", livro.isLidos());\
+//        cv.put("_id", livro.getId());
+//        cv.put("capa", livro.getCapa());
+//        cv.put("isBiblioteca", livro.isBiblioteca());
+//        cv.put("isDesejo", livro.isDesejo());
+//        cv.put("isLidos", livro.isLidos());
 
         try {
             String[] dados = {livro.getId().toString()};
-            db.update("livros", cv, "id = ?", dados);
+            db.update("livros", cv, "_id=?", dados);
 
         }catch (Exception e){
             return false;
@@ -85,13 +85,14 @@ public class LivroDAO implements ILivroDAO{
     public List<Livro> listaDeBiblioteca() {
         List<Livro> lista = new ArrayList<>();
 
-        String sql = "SELECT titulo,capa,autor,editora,edicao,preco FROM livros WHERE isBiblioteca=1;";
+        String sql = "SELECT _id,titulo,capa,autor,edicao,editora,preco FROM livros WHERE isBiblioteca=1;";
 
         Cursor c = dbQuery.rawQuery(sql, null);
 
         while(c.moveToNext()){
 
             Livro livro = new Livro();
+            Integer id = c.getInt(c.getColumnIndex("_id"));
             String titulo = c.getString(c.getColumnIndex("titulo"));
             String autor = c.getString(c.getColumnIndex("autor"));
             String edicao = c.getString(c.getColumnIndex("edicao"));
@@ -99,6 +100,7 @@ public class LivroDAO implements ILivroDAO{
             Double preco = c.getDouble(c.getColumnIndex("preco"));
             byte[] capa = c.getBlob(c.getColumnIndex("capa"));
 
+            livro.setId(id);
             livro.setTitulo(titulo);
             livro.setAutor(autor);
             livro.setEdicao(edicao);
@@ -118,13 +120,14 @@ public class LivroDAO implements ILivroDAO{
 
         List<Livro> lista = new ArrayList<>();
 
-        String sql = "SELECT titulo,capa,autor,editora,edicao,preco FROM livros WHERE isDesejo=1;";
+        String sql = "SELECT _id,titulo,capa,autor,edicao,editora,preco FROM livros WHERE isDesejo=1;";
 
         Cursor c = dbQuery.rawQuery(sql, null);
 
         while(c.moveToNext()){
 
             Livro livro = new Livro();
+            Integer id = c.getInt(c.getColumnIndex("_id"));
             String titulo = c.getString(c.getColumnIndex("titulo"));
             String autor = c.getString(c.getColumnIndex("autor"));
             String edicao = c.getString(c.getColumnIndex("edicao"));
@@ -132,6 +135,7 @@ public class LivroDAO implements ILivroDAO{
             Double preco = c.getDouble(c.getColumnIndex("preco"));
             byte[] capa = c.getBlob(c.getColumnIndex("capa"));
 
+            livro.setId(id);
             livro.setTitulo(titulo);
             livro.setAutor(autor);
             livro.setEdicao(edicao);
