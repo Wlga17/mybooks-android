@@ -9,21 +9,27 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.expertsunited.mybooks.RegraDeNegocio.LivroNegocio;
 import dev.expertsunited.mybooks.model.Livro;
 
 public class LivroDAO implements ILivroDAO{
 
     private SQLiteDatabase db;
     private SQLiteDatabase dbQuery;
+    private LivroNegocio regra;
 
     public LivroDAO(Context context) {
         DbHelper dbHelper = new DbHelper( context );
         db = dbHelper.getWritableDatabase();
         dbQuery = dbHelper.getReadableDatabase();
+        regra = new LivroNegocio(context);
     }
 
     @Override
-    public boolean cadastrar(Livro livro) {
+    public boolean cadastrar(Livro livro) throws Exception{
+        regra.validarNuloCadastro(livro);
+        regra.validarValorLivro(livro);
+        regra.validarTituloDuplo(livro.getTitulo());
 
         ContentValues cv = new ContentValues();
         cv.put("titulo", livro.getTitulo());
@@ -48,8 +54,10 @@ public class LivroDAO implements ILivroDAO{
     }
 
     @Override
-    public boolean alterar(Livro livro) {
-
+    public boolean alterar(Livro livro) throws Exception{
+        regra.validarNuloCadastro(livro);
+        regra.validarValorLivro(livro);
+        regra.validarTituloDuplo(livro.getTitulo());
 
         ContentValues cv = new ContentValues();
         cv.put("titulo", livro.getTitulo());
@@ -110,7 +118,7 @@ public class LivroDAO implements ILivroDAO{
             lista.add(livro);
 
         }
-
+        c.close();
         return lista;
 
     }
@@ -145,8 +153,18 @@ public class LivroDAO implements ILivroDAO{
             lista.add(livro);
 
         }
-
+        c.close();
         return lista;
 
     }
+
+    @Override
+    public boolean consultarTitulo(String titulo){
+        Cursor c = dbQuery.rawQuery("SELECT * FROM livros WHERE titulo=?", new String[] {titulo});
+        int result = c.getCount();
+        c.close();
+        return result > 0;
+    }
+
+
 }

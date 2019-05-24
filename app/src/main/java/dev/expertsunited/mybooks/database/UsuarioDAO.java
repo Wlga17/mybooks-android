@@ -6,21 +6,27 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import dev.expertsunited.mybooks.RegraDeNegocio.UsuarioNegocio;
 import dev.expertsunited.mybooks.model.Usuario;
 
 public class UsuarioDAO implements IUsuarioDAO{
 
     private SQLiteDatabase db;
     private SQLiteDatabase dbQuery;
+    private UsuarioNegocio regra;
 
     public UsuarioDAO(Context context) {
         DbHelper dbHelper = new DbHelper( context );
         db = dbHelper.getWritableDatabase();
         dbQuery = dbHelper.getReadableDatabase();
+        regra = new UsuarioNegocio();
     }
 
     @Override
-    public boolean cadastrar(Usuario usuario) {
+    public boolean cadastrar(Usuario usuario) throws Exception{
+
+        regra.validarNuloCadastro(usuario);
+        regra.validarEmailFormato(usuario);
 
         ContentValues cv = new ContentValues();
         cv.put("nome", usuario.getNome());
@@ -40,23 +46,48 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
 
     @Override
-    public boolean atualizar(Usuario usuario) {
-        return false;
+    public boolean atualizar(Usuario usuario) throws Exception{
+        regra.validarNuloCadastro(usuario);
+        regra.validarEmailFormato(usuario);
+
+        String sql = "SELECT * FROM usuarios WHERE _id=?;";
+        Cursor c = dbQuery.rawQuery(sql, new String[] {usuario.getId().toString()});
+        if (c.getCount() > 0){
+            ContentValues cv = new ContentValues();
+            cv.put("nome", usuario.getNome());
+            cv.put("email", usuario.getEmail());
+            cv.put("login", usuario.getLogin());
+            cv.put("senha", usuario.getSenha());
+
+            String[] dados = {usuario.getId().toString()};
+            db.update("usuarios", cv, "_id=?", dados);
+            c.close();
+            return true;
+        }else {
+            return false;
+        }
     }
 
 
     @Override
-    public String validarLogin(String login, String senha) {
-        Cursor c = dbQuery.rawQuery("SELECT * FROM usuarios WHERE login=? AND senha=?", new String[] {login, senha});
+    public String validarLogin(String login, String senha) throws Exception{
+        regra.validarLoginESenha(login,senha);
+        String sql = "SELECT * FROM usuarios WHERE login=? AND senha=?;";
+        Cursor c = dbQuery.rawQuery(sql, new String[] {login, senha});
         if (c.getCount() > 0) {
             return "OK";
         }
+        c.close();
         return "ERRO";
     }
 
+
     @Override
     public String pegarId(String login, String senha) {
-        Cursor c = dbQuery.rawQuery("SELECT _id FROM usuarios WHERE login=? AND senha=?", new String[] {login, senha});
-        return c.toString();
+        String sql = "SELECT _id FROM usuarios WHERE login=? AND senha=?;";
+        Cursor c = dbQuery.rawQuery(sql, new String[] {login, senha});
+        String result = c.toString();
+        c.close();
+        return result;
     }
 }
