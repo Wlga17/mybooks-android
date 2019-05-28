@@ -114,8 +114,7 @@ public class DetalheBibliotecaActivity extends AppCompatActivity implements View
                 LivroDAO dao = new LivroDAO( getApplicationContext() );
                 dao.deletar(tvTitulo.getText().toString());
                 dialog.dismiss();
-                Intent intent = new Intent(getApplicationContext() , BibliotecaFragment.class);
-                startActivity(intent);
+                finish();
 
             }
         });
@@ -159,6 +158,8 @@ public class DetalheBibliotecaActivity extends AppCompatActivity implements View
             l.setEdicao( edicao );
             l.setEditora( editora );
             l.setValor( preco );
+            l.setBiblioteca(true);
+            l.setDesejo(false);
             l.setId( livroAtual.getId() );
 
             if (dao.alterar(l)) {

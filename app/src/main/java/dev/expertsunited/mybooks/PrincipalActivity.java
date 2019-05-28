@@ -58,9 +58,9 @@ public class PrincipalActivity extends AppCompatActivity implements BottomNaviga
                 break;
             }
 
-            case R.id.menu_perfil:{
+            /*case R.id.menu_perfil:{
                 break;
-            }
+            }*/
 
         }
 

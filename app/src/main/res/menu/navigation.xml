@@ -16,9 +16,9 @@
         android:icon="@drawable/ic_local_library_black_24dp"
         android:title="Lidos"/>
 
-    <item
+   <!-- <item
         android:id="@+id/menu_perfil"
         android:icon="@drawable/ic_perm_identity_black_24dp"
-        android:title="Perfil"/>
+        android:title="Perfil"/> -->
 
 </menu>

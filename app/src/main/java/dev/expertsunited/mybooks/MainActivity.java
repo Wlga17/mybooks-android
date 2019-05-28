@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-//      SharedPreferences preferencias = (SharedPreferences) MySharedPreference.getInstance(this);
+ //       preferencias = (MySharedPreference) MySharedPreference.getInstance(this);
 
         edtLogin = findViewById(R.id.edt_login);
         edtSenha = findViewById(R.id.edt_senha);
@@ -77,9 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
 
-            //Dados Preferencias
-//            preferencias.setUserName(usuario.getLogin());
-//            preferencias.setUserId(usuario.getId());
+ //             preferencias.setUserName(usuario.getLogin());
+//              preferencias.setUserId(usuario.getId());
         }
     }
 

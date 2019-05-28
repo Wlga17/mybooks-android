@@ -51,16 +51,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         myViewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Livro livroSelecionado = mList.get(i);
                 Intent intent = new Intent(mContext, DetalheLivroDesejosActivity.class);
-
-                intent.putExtra("capa", mList.get(i).getCapa());
-                intent.putExtra("titulo", mList.get(i).getTitulo());
-                intent.putExtra("autor", mList.get(i).getAutor());
-                intent.putExtra("edicao", mList.get(i).getEdicao());
-                intent.putExtra("editora", mList.get(i).getEditora());
-                intent.putExtra("preco", mList.get(i).getValor());
-
+                intent.putExtra("livroSelecionado", livroSelecionado);
                 mContext.startActivity(intent);
+//                intent.putExtra("capa", mList.get(i).getCapa());
+//                intent.putExtra("titulo", mList.get(i).getTitulo());
+//                intent.putExtra("autor", mList.get(i).getAutor());
+//                intent.putExtra("edicao", mList.get(i).getEdicao());
+//                intent.putExtra("editora", mList.get(i).getEditora());
+//                intent.putExtra("preco", mList.get(i).getValor());
             }
         });
 
