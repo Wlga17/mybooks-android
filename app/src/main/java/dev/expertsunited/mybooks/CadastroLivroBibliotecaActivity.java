@@ -103,7 +103,12 @@ public class CadastroLivroBibliotecaActivity extends AppCompatActivity implement
                 if (livro.getTitulo().equals("") || livro.getAutor().equals("")) {
                     Toast.makeText(this, "Preecher o Titulo e o Autor", Toast.LENGTH_SHORT).show();
                 }else {
-                    boolean result = dao.cadastrar(livro);
+                    boolean result = false;
+                    try {
+                        result = dao.cadastrar(livro);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     if (result == true) {
                         Toast.makeText(this, "Livro cadastrado! ", Toast.LENGTH_SHORT).show();
                         finish();

@@ -6,16 +6,17 @@ public class UsuarioNegocio {
 
     public UsuarioNegocio() { }
 
-    public void validarLoginESenha(String login, String senha) throws Exception{
+    public boolean validarLoginESenha(String login, String senha) throws Exception{
         if (login.equals("") || login.isEmpty()) {
             throw new Exception("Informe o seu login!");
         }
         if (senha.equals("") || senha.isEmpty()) {
             throw new Exception("Informe a sua senha!");
         }
+        return true;
     }
 
-    public void validarNuloCadastro(Usuario usuario) throws Exception{
+    public boolean validarNuloCadastro(Usuario usuario) throws Exception{
         if (usuario == null) {
             throw new Exception("Null!");
         }
@@ -31,13 +32,16 @@ public class UsuarioNegocio {
         if (usuario.getSenha().equals("") || usuario.getSenha() == null) {
             throw new Exception("Informe a sua senha!");
         }
+        return true;
     }
 
-    public void validarEmailFormato(Usuario usuario) throws Exception{
-        String regex = "^(.+)@(.+)$";
-        if (!usuario.getEmail().matches(regex)) {
-            throw new Exception("E-mail incorreto!");
+    public boolean validarEmailFormato(String email){
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        if (!email.matches(regex)) {
+            return false;
+            //throw new Exception("E-mail incorreto!");
         }
+        return true;
     }
 
 }

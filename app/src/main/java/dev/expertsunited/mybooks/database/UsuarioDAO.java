@@ -26,7 +26,8 @@ public class UsuarioDAO implements IUsuarioDAO{
     public boolean cadastrar(Usuario usuario) throws Exception{
 
         regra.validarNuloCadastro(usuario);
-        regra.validarEmailFormato(usuario);
+        String email = usuario.getEmail();
+        regra.validarEmailFormato(email);
 
         ContentValues cv = new ContentValues();
         cv.put("nome", usuario.getNome());
@@ -48,7 +49,8 @@ public class UsuarioDAO implements IUsuarioDAO{
     @Override
     public boolean atualizar(Usuario usuario) throws Exception{
         regra.validarNuloCadastro(usuario);
-        regra.validarEmailFormato(usuario);
+        String email = usuario.getEmail();
+        regra.validarEmailFormato(email);
 
         String sql = "SELECT * FROM usuarios WHERE _id=?;";
         Cursor c = dbQuery.rawQuery(sql, new String[] {usuario.getId().toString()});

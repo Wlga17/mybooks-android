@@ -161,11 +161,15 @@ public class DetalheBibliotecaActivity extends AppCompatActivity implements View
             l.setValor( preco );
             l.setId( livroAtual.getId() );
 
-            if (dao.alterar(l)) {
-                finish();
-                Toast.makeText(this, "Atualizado com sucesso! ", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(this, "Erro ao atualizar! ", Toast.LENGTH_SHORT).show();
+            try {
+                if (dao.alterar(l)) {
+                    finish();
+                    Toast.makeText(this, "Atualizado com sucesso! ", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "Erro ao atualizar! ", Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

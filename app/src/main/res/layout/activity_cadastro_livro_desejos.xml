@@ -30,7 +30,6 @@
             android:layout_height="143dp"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="37dp"
-            android:src="@drawable/padrao"
             android:background="@color/cardview_dark_background"/>
 
         <Button

@@ -108,7 +108,12 @@ public class CadastroLivroDesejosActivity extends AppCompatActivity implements V
                     livro.setBiblioteca(false);
                     livro.setDesejo(true);
                     livro.setLidos(false);
-                    boolean result = dao.cadastrar(livro);
+                    boolean result = false;
+                    try {
+                        result = dao.cadastrar(livro);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     if (result == true) {
                         Toast.makeText(this, "Livro cadastrado! ", Toast.LENGTH_SHORT).show();
                         finish();
