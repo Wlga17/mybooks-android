@@ -50,6 +50,54 @@ public class UsuarioTeste {
     }
 
     @Test
+    public void emailNaoNuloTest(){
+        //Arranjar
+        String email_nao_nulo = "gabrielksi@gmail.com";
+
+        //Agir
+        boolean result = regra.validarEmailNulo(email_nao_nulo);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void emailNuloTest(){
+        //Arranjar
+        String email_nulo = "";
+
+        //Agir
+        boolean result = regra.validarEmailNulo(email_nulo);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void nomeNaoNuloTest(){
+        //Arranjar
+        String nome = "gabriel";
+
+        //Agir
+        boolean result = regra.validarNomeNulo(nome);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void nomeNuloTest(){
+        //Arranjar
+        String nome = "";
+
+        //Agir
+        boolean result = regra.validarNomeNulo(nome);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
     public void nomeTamanho3Test() {
         //Arranjar
         String nome = "abc";
@@ -59,6 +107,35 @@ public class UsuarioTeste {
 
         //Afirmar
         Assert.assertFalse(result);
+    }
+
+    @Test
+    public void loginNaoNulo(){
+        //Arranjar
+        String login = "loginUsuario";
+
+        //Agir
+        boolean result = regra.validarLoginNulo(login);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void loginNulo(){
+        //Arranjar
+        String login = "";
+
+        //Agir
+        boolean result = regra.validarLoginNulo(login);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void validarFormatoLogin(){
+
     }
 
     @After
