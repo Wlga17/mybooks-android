@@ -56,12 +56,8 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
            if(usuario.getNome().equals("") || usuario.getEmail().equals("") || usuario.getLogin().equals("") || usuario.getSenha().equals("")){
                Toast.makeText(this, "Todos os campos precisam ser preenchidos", Toast.LENGTH_SHORT).show();
            }else{
-               boolean result = false;
-               try {
-                   result = dao.cadastrar(usuario);
-               } catch (Exception e) {
-                   e.printStackTrace();
-               }
+               boolean result = dao.cadastrar(usuario);
+
                if (result == true) {
                    Toast.makeText(this, "Cadastrado com sucesso! ", Toast.LENGTH_SHORT).show();
                    finish();

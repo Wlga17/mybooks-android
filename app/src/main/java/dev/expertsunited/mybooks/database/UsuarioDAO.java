@@ -23,9 +23,8 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
 
     @Override
-    public boolean cadastrar(Usuario usuario) throws Exception{
+    public boolean cadastrar(Usuario usuario) {
 
-        regra.validarNuloCadastro(usuario);
         String email = usuario.getEmail();
         regra.validarEmailFormato(email);
 
@@ -47,8 +46,7 @@ public class UsuarioDAO implements IUsuarioDAO{
     }
 
     @Override
-    public boolean atualizar(Usuario usuario) throws Exception{
-        regra.validarNuloCadastro(usuario);
+    public boolean atualizar(Usuario usuario) {
         String email = usuario.getEmail();
         regra.validarEmailFormato(email);
 
@@ -72,8 +70,7 @@ public class UsuarioDAO implements IUsuarioDAO{
 
 
     @Override
-    public String validarLogin(String login, String senha) throws Exception{
-        regra.validarLoginESenha(login,senha);
+    public String validarLogin(String login, String senha) {
         String sql = "SELECT * FROM usuarios WHERE login=? AND senha=?;";
         Cursor c = dbQuery.rawQuery(sql, new String[] {login, senha});
         if (c.getCount() > 0) {

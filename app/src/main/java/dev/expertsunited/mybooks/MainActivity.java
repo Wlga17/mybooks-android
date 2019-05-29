@@ -67,12 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }else {
                 String login = usuario.getLogin();
                 String senha = usuario.getSenha();
-                String result = null;
-                try {
-                    result = dao.validarLogin(login, senha);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                String result = dao.validarLogin(login, senha);
 
                 if (result.equals("OK")) {
                     Intent intent = new Intent(this, PrincipalActivity.class);

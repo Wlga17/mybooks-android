@@ -22,14 +22,11 @@ public class LivroDAO implements ILivroDAO{
         DbHelper dbHelper = new DbHelper( context );
         db = dbHelper.getWritableDatabase();
         dbQuery = dbHelper.getReadableDatabase();
-        regra = new LivroNegocio(context);
+        regra = new LivroNegocio();
     }
 
     @Override
-    public boolean cadastrar(Livro livro) throws Exception{
-        regra.validarNuloCadastro(livro);
-        regra.validarValorLivro(livro);
-        regra.validarTituloDuplo(livro.getTitulo());
+    public boolean cadastrar(Livro livro) {
 
         ContentValues cv = new ContentValues();
         cv.put("titulo", livro.getTitulo());
@@ -54,10 +51,7 @@ public class LivroDAO implements ILivroDAO{
     }
 
     @Override
-    public boolean alterar(Livro livro) throws Exception{
-        regra.validarNuloCadastro(livro);
-        regra.validarValorLivro(livro);
-        regra.validarTituloDuplo(livro.getTitulo());
+    public boolean alterar(Livro livro) {
 
         ContentValues cv = new ContentValues();
         cv.put("titulo", livro.getTitulo());

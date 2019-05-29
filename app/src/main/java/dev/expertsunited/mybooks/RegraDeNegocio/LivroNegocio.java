@@ -1,47 +1,62 @@
 package dev.expertsunited.mybooks.RegraDeNegocio;
 
-import android.content.Context;
-
-import dev.expertsunited.mybooks.database.ILivroDAO;
-import dev.expertsunited.mybooks.database.LivroDAO;
-import dev.expertsunited.mybooks.model.Livro;
-
 public class LivroNegocio {
 
-    private ILivroDAO dao;
-
-    public LivroNegocio(Context  context) {
-        dao = new LivroDAO(context);
+    public LivroNegocio() {
     }
 
-    public void validarNuloCadastro(Livro livro) throws Exception{
-        if (livro == null){
-            throw new Exception("Null! ");
-        }
-        if (livro.getTitulo().equals("") || livro.getTitulo() == null) {
-            throw new Exception("Informe o titulo do livro! ");
-        }
-        if (livro.getAutor().equals("") || livro.getAutor() == null){
-            throw new Exception("Informe o autor do livro! ");
-        }
-        if (!livro.getEditora().matches("[A-Za-z]")) {
-            throw new Exception("Editora invalida! ");
-        }
-        if (!livro.getIndicacao().matches("[A-Za-z]")) {
-            throw new Exception("Nome invalido! ");
-        }
+    public boolean validarTituloFormato(String titulo) {
+        String regex = "^[a-zA-Z0-9] {4,20}$";
+        return titulo.matches(regex.trim());
     }
 
-    public void validarValorLivro(Livro livro) throws Exception{
-        if (livro.getValor().isNaN()){
-            throw new Exception("Valor invalido! ");
-        }
+    public boolean validarTituloNulo(String titulo) {
+        return !titulo.trim().equals("") && !titulo.trim().isEmpty();
     }
 
-    public void validarTituloDuplo(String titulo) throws Exception{
-        if (dao.consultarTitulo(titulo)){
-            throw new Exception("Esse titulo ja existe! ");
-        }
+    public boolean validarAutorFormato(String autor) {
+        String regex = "^[a-zA-Z] {4,20}$";
+        return autor.matches(regex.trim());
+    }
+
+    public boolean validarAutorNulo(String autor) {
+        return !autor.trim().equals("") && !autor.trim().isEmpty();
+    }
+
+    public boolean validarEdicaoFormato(String edicao) {
+        String regex = "^[a-z0-9] {2,10}$";
+        return edicao.matches(regex.trim());
+    }
+
+    public boolean validarEdicaoNulo(String edicao) {
+        return !edicao.trim().equals("") && !edicao.trim().isEmpty();
+    }
+
+    public boolean validarEditoraFormato(String editora) {
+        String regex = "^[a-zA-Z] {4,50}$";
+        return editora.matches(regex.trim());
+    }
+
+    public boolean validarEditoraNulo(String editora) {
+        return !editora.trim().equals("") && !editora.trim().isEmpty();
+    }
+
+    public boolean validarIndicacaoFormato(String indicacao) {
+        String regex = "^[a-zA-Z] {4,20}$";
+        return indicacao.matches(regex.trim());
+    }
+
+    public boolean validarIndicacaoNulo(String indicacao) {
+        return !indicacao.trim().equals("") && !indicacao.trim().isEmpty();
+    }
+
+    public boolean validarPrecoFormato(String preco) {
+        String regex = "^[0-9] {1,7}$";
+        return preco.matches(regex.trim());
+    }
+
+    public boolean validarPrecoNulo(String preco) {
+        return !preco.trim().equals("") && !preco.trim().isEmpty();
     }
 
 }
