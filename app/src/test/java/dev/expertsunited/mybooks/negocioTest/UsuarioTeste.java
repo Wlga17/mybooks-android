@@ -1,8 +1,11 @@
 package dev.expertsunited.mybooks.negocioTest;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import dev.expertsunited.mybooks.RegraDeNegocio.UsuarioNegocio;
 import dev.expertsunited.mybooks.model.Usuario;
@@ -11,6 +14,10 @@ public class UsuarioTeste {
 
     private Usuario usuario;
     private UsuarioNegocio regra;
+
+    //Arranjar
+    //Agir
+    //Afirmar
 
     @Before
     public void iniciarObjetos(){
@@ -40,5 +47,23 @@ public class UsuarioTeste {
 
         //Afirmar
         Assert.assertFalse(result);
+    }
+
+    @Test
+    public void nomeTamanho3Test() {
+        //Arranjar
+        String nome = "abc";
+
+        //Agir
+        boolean result = regra.validarNomeFormato(nome);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @After
+    public void destruirObjetos() {
+        usuario = null;
+        regra = null;
     }
 }

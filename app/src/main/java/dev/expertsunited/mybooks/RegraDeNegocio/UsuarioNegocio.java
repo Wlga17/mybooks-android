@@ -36,12 +36,42 @@ public class UsuarioNegocio {
     }
 
     public boolean validarEmailFormato(String email){
-        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
-        if (!email.matches(regex)) {
-            return false;
-            //throw new Exception("E-mail incorreto!");
-        }
-        return true;
+        String regex = "^[a-zA-Z]+[0-9+_.-]+@(.+)$";
+        return email.matches(regex.trim());
     }
 
+    public boolean validarEmailNulo(String email) {
+        return !email.equals("") && !email.isEmpty();
+    }
+
+    public boolean validarNomeFormato(String nome) {
+        String regex = "^[a-zA-Z]{4,200}$";
+        return nome.matches(regex.trim());
+    }
+
+    public boolean validarNomeNulo(String nome) {
+        return !nome.equals("") && !nome.isEmpty();
+    }
+
+    public boolean validarLoginFormato(String login) {
+        String regex = "^[a-z]+[0-9]{6,12}$";
+        return login.matches(regex.trim());
+    }
+
+    public boolean validarLoginNulo(String login) {
+        return !login.equals("") && !login.isEmpty();
+    }
+
+    public boolean validarSenhaFormato(String senha) {
+        String regex = "^((? =. * [az]) (? =. * d) (? =. * [@ # $%]) (? =. * [AZ]). {6,16})$";
+        return senha.matches(regex.trim());
+    }
+
+    public boolean validarSenhaNulo(String senha) {
+        return !senha.equals("") && !senha.isEmpty();
+    }
+
+    public boolean validarIgualdadeLoginSenha(String login, String senha){
+        return !login.equals(senha);
+    }
 }
