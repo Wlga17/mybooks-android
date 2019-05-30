@@ -33,7 +33,7 @@ public class LivroTest {
         boolean result = regra.validarTituloFormato(titulo);
 
         //Afirmar
-        Assert.assertFalse(result);
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -48,6 +48,52 @@ public class LivroTest {
         Assert.assertTrue(result);
     }
 
+    @Test
+    public void validarTituloSoLetraMaisucula(){
+        //Arranjar
+        String titulo = "MAODEDEUS";
+
+        //Agir
+        boolean result = regra.validarTituloFormato(titulo);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void invalidarTituloCurtoTest(){
+        //Arranjar
+        String titulo = "nos";
+
+        //Agir
+        boolean result = regra.validarTituloFormato(titulo);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarTituloExcedenteTest(){
+        //Arranjar
+        String titulo = "O Curioso Caso de Benjaminho Botao das neves";
+
+        //Agir
+        boolean result = regra.validarTituloFormato(titulo);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+    @Test
+    public void validarTituloFormatoCorreto(){
+        //Arranjar
+        String titulo = "O Ano 1";
+
+        //Agir
+        boolean result = regra.validarTituloFormato(titulo);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
 
 
     @After
