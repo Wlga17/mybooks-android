@@ -12,6 +12,7 @@ public class LivroTest {
 
     private Livro livro;
     private LivroNegocio regra;
+    private Boolean result;
 
     private String tituloSoNumero;
     private String tituloValidoSoLetraMinuscula;
@@ -25,7 +26,7 @@ public class LivroTest {
     }
 
     @Test
-    public void validarTituloSoNumero(){
+    public void validarTituloSoNumeroTest(){
         //Arranjar
         String titulo = "123456";
 
@@ -37,7 +38,7 @@ public class LivroTest {
     }
 
     @Test
-    public void validatarTituloSoLetraMinuscula(){
+    public void validatarTituloSoLetraMinusculaTest(){
         //Arranjar
         String titulo = "asdfsd";
 
@@ -49,7 +50,7 @@ public class LivroTest {
     }
 
     @Test
-    public void validarTituloSoLetraMaisucula(){
+    public void validarTituloSoLetraMaisuculaTest(){
         //Arranjar
         String titulo = "MAODEDEUS";
 
@@ -83,10 +84,35 @@ public class LivroTest {
         //Afirmar
         Assert.assertFalse(result);
     }
+
     @Test
-    public void validarTituloFormatoCorreto(){
+    public void validarTituloFormatoCorretoTest(){
         //Arranjar
         String titulo = "O Ano 1";
+
+        //Agir
+        boolean result = regra.validarTituloFormato(titulo);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarTituloNotNullTest(){
+        //Arranjar
+        String titulo = "ABC Facil";
+
+        //Agir
+        boolean result = regra.validarTituloFormato(titulo);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void invalidarTituloNullTest(){
+        //Arranjar
+        String titulo = "";
 
         //Agir
         boolean result = regra.validarTituloFormato(titulo);
