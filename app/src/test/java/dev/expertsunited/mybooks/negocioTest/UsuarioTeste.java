@@ -14,10 +14,6 @@ public class UsuarioTeste {
     private UsuarioNegocio regra;
     private Boolean result;
 
-    //Arranjar
-    //Agir
-    //Afirmar
-
     @Before
     public void iniciarObjetos(){
         regra = new UsuarioNegocio();
@@ -34,6 +30,30 @@ public class UsuarioTeste {
 
         //Afirmar
         Assert.assertTrue(result);
+    }
+
+    @Test
+    public void invalidarEmailSemArrobaTest(){
+        //Arranjar
+        String email_invalido_Semarroba = "abc100gmail.com";
+
+        //Agir
+        result = regra.validarEmailFormato(email_invalido_Semarroba);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarEmailSemPontoTest(){
+        //Arranjar
+        String email_invalido_Semponto = "abc100@gmailcombr";
+
+        //Agir
+        result = regra.validarEmailFormato(email_invalido_Semponto);
+
+        //Afirmar
+        Assert.assertFalse(result);
     }
 
     @Test

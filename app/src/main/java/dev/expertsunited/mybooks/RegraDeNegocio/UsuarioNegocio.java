@@ -7,7 +7,7 @@ public class UsuarioNegocio {
     public UsuarioNegocio() { }
 
     public boolean validarEmailFormato(String email){
-        String regex = "^[a-zA-Z]+[0-9+_.-]+@(.+)$";
+        String regex = "^[a-zA-Z0-9_.-]+@[a-zA-Z]+[.](.+)$";
         return email.matches(regex.trim());
     }
 
