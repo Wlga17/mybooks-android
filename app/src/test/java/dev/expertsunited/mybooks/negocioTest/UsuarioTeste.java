@@ -23,10 +23,10 @@ public class UsuarioTeste {
     @Test
     public void validarEmailCorretoTest(){
         //Arranjar
-        String email_valido = "abc100@gmail.com";
+        String email_Valido = "abc100@gmail.com";
 
         //Agir
-        result = regra.validarEmailFormato(email_valido);
+        result = regra.validarEmailFormato(email_Valido);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -35,10 +35,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarEmailSemArrobaTest(){
         //Arranjar
-        String email_invalido_Semarroba = "abc100gmail.com";
+        String email_Invalido_SemArroba = "abc100gmail.com";
 
         //Agir
-        result = regra.validarEmailFormato(email_invalido_Semarroba);
+        result = regra.validarEmailFormato(email_Invalido_SemArroba);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -47,10 +47,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarEmailSemPontoTest(){
         //Arranjar
-        String email_invalido_Semponto = "abc100@gmailcombr";
+        String email_Invalido_SemPonto = "abc100@gmailcombr";
 
         //Agir
-        result = regra.validarEmailFormato(email_invalido_Semponto);
+        result = regra.validarEmailFormato(email_Invalido_SemPonto);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -59,10 +59,22 @@ public class UsuarioTeste {
     @Test
     public void invalidarEmailIncorretoTest(){
         //Arranjar
-        String email_invalido = "abc.com";
+        String email_Invalido = "abc.com";
 
         //Agir
-        result = regra.validarEmailFormato(email_invalido);
+        result = regra.validarEmailFormato(email_Invalido);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarEmailComLetraMaiusculaTest(){
+        //Arranjar
+        String email_Invalido_ComLetraMaiuscula = "abc100@Gmail.com.br";
+
+        //Agir
+        result = regra.validarEmailFormato(email_Invalido_ComLetraMaiuscula);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -71,10 +83,10 @@ public class UsuarioTeste {
     @Test
     public void validarEmailNaoNuloTest(){
         //Arranjar
-        String email_nao_nulo = "gabrielksi@gmail.com";
+        String email_Nao_Nulo = "gabrielksi@gmail.com";
 
         //Agir
-        result = regra.validarEmailNulo(email_nao_nulo);
+        result = regra.validarEmailNulo(email_Nao_Nulo);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -83,10 +95,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarEmailNuloTest(){
         //Arranjar
-        String email_nulo = "";
+        String email_Nulo = "";
 
         //Agir
-        result = regra.validarEmailNulo(email_nulo);
+        result = regra.validarEmailNulo(email_Nulo);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -95,10 +107,10 @@ public class UsuarioTeste {
     @Test
     public void validarNomeNaoNuloTest(){
         //Arranjar
-        String nome = "gabriel";
+        String nome_Nao_Nulo = "gabriel";
 
         //Agir
-        result = regra.validarNomeNulo(nome);
+        result = regra.validarNomeNulo(nome_Nao_Nulo);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -107,10 +119,10 @@ public class UsuarioTeste {
     @Test
     public void validarNomeFormatoCorretoTest(){
         //Arranjar
-        String nome = "gabriel";
+        String nome_Valido = "Gabriel Carvalho de Sá";
 
         //Agir
-        result = regra.validarNomeFormato(nome);
+        result = regra.validarNomeFormato(nome_Valido);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -119,10 +131,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarNomeNuloTest(){
         //Arranjar
-        String nome = "";
+        String nome_Nulo = "";
 
         //Agir
-        result = regra.validarNomeNulo(nome);
+        result = regra.validarNomeNulo(nome_Nulo);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -131,10 +143,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarNomeCurtoTest() {
         //Arranjar
-        String nome = "abc";
+        String nome_Curto = "abc";
 
         //Agir
-        result = regra.validarNomeFormato(nome);
+        result = regra.validarNomeFormato(nome_Curto);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -143,10 +155,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarNomeExcedenteTest() {
         //Arranjar
-        String nome = "William Luiz Gonçalves de Araujo";
+        String nome_Excedente = "William Luiz Gonçalves de Araujo";
 
         //Agir
-        result = regra.validarNomeFormato(nome);
+        result = regra.validarNomeFormato(nome_Excedente);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -155,10 +167,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarNomeComNumeroTest(){
         //Arranjar
-        String nome = "william10";
+        String nome_Com_Numero = "william10";
 
         //Agir
-        result = regra.validarNomeFormato(nome);
+        result = regra.validarNomeFormato(nome_Com_Numero);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -167,10 +179,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarNomeComCaracteresEspeciaisTest(){
         //Arranjar
-        String nome = "william$$$";
+        String nome_Caracter_Especial = "william$$$";
 
         //Agir
-        result = regra.validarNomeFormato(nome);
+        result = regra.validarNomeFormato(nome_Caracter_Especial);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -179,10 +191,10 @@ public class UsuarioTeste {
     @Test
     public void validarLoginNaoNuloTest(){
         //Arranjar
-        String login = "loginUsuario";
+        String login_Nao_Nulo = "loginUsuario";
 
         //Agir
-        result = regra.validarLoginNulo(login);
+        result = regra.validarLoginNulo(login_Nao_Nulo);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -191,10 +203,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarLoginNuloTest(){
         //Arranjar
-        String login = "";
+        String login_Nulo = "";
 
         //Agir
-        result = regra.validarLoginNulo(login);
+        result = regra.validarLoginNulo(login_Nulo);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -203,10 +215,10 @@ public class UsuarioTeste {
     @Test
     public void validarLoginFormatoCorretoTest(){
         //Arranjar
-        String loginFormatoValido = "Avohai";
+        String login_Formato_Valido = "Avohai";
 
         //Agir
-        result = regra.validarLoginFormato(loginFormatoValido);
+        result = regra.validarLoginFormato(login_Formato_Valido);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -215,10 +227,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarLoginCurtoTest(){
         //Arranjar
-        String login5Caracteres = "avoha";
+        String login_Curto = "avoha";
 
         //Agir
-        result = regra.validarLoginFormato(login5Caracteres);
+        result = regra.validarLoginFormato(login_Curto);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -227,22 +239,22 @@ public class UsuarioTeste {
     @Test
     public void invalidarLoginExcedenteTest(){
         //Arranjar
-        String login13Caracteres = "avohaiTexeira";
+        String login_Excedente = "avohaiTexeira";
 
         //Agir
-        result = regra.validarLoginFormato(login13Caracteres);
+        result = regra.validarLoginFormato(login_Excedente);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void invalidarLoginComCaracteresEspeciaisTest(){
+    public void invalidarLoginComCaracteresEspeciaisInvalidosTest(){
         //Arranjar
-        String loginComCaracEspecial = "@avohai";
+        String login_Caracter_Especial = "*avohai";
 
         //Agir
-        result = regra.validarLoginFormato(loginComCaracEspecial);
+        result = regra.validarLoginFormato(login_Caracter_Especial);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -251,10 +263,10 @@ public class UsuarioTeste {
     @Test
     public void validarLoginComNumeroTest(){
         //Arranjar
-        String loginComNumero = "avohai10";
+        String login_Com_Numero = "avohai10";
 
         //Agir
-        result = regra.validarLoginFormato(loginComNumero);
+        result = regra.validarLoginFormato(login_Com_Numero);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -263,10 +275,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarSenhaNulaTest(){
         //Arranjar
-        String senhaNula = " ";
+        String senha_Nula = " ";
 
         //Agir
-        result = regra.validarSenhaNulo(senhaNula);
+        result = regra.validarSenhaNulo(senha_Nula);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -275,10 +287,10 @@ public class UsuarioTeste {
     @Test
     public void validarSenhaNaoNulaTest(){
         //Arranjar
-        String senhaNaoNula = "1234567";
+        String senha_Nao_Nula = "@Bcd22";
 
         //Agir
-        result = regra.validarSenhaNulo(senhaNaoNula);
+        result = regra.validarSenhaNulo(senha_Nao_Nula);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -287,10 +299,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarSenhaCurtaTest(){
         //Arranjar
-        String senhaCurta = "12345";
+        String senha_Curta = "Do@5";
 
         //Agir
-        result = regra.validarSenhaFormato(senhaCurta);
+        result = regra.validarSenhaFormato(senha_Curta);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -299,80 +311,140 @@ public class UsuarioTeste {
     @Test
     public void invalidarSenhaExcedenteTest(){
         //Arranjar
-        String senhaExcedente = "avohai1234567";
+        String senha_Excedente = "@Vohai1234567";
 
         //Agir
-        result = regra.validarSenhaFormato(senhaExcedente);
+        result = regra.validarSenhaFormato(senha_Excedente);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void validarSenhaComLetraMinusculaTest(){
+    public void invalidarSenhaSoComLetraMinusculaTest(){
         //Arranjar
-        String senhaLetraMinuscula = "abcdefhg";
+        String senha_Letra_Minuscula = "abcdefhg";
 
         //Agir
-        result = regra.validarSenhaFormato(senhaLetraMinuscula);
-
-        //Afirmar
-        Assert.assertTrue(result);
-    }
-
-    @Test
-    public void validarSenhaComLetraMaiusculaTest(){
-        //Arranjar
-        String senhaLetraMaiuscula = "ABCDEFGHIJ";
-
-        //Agir
-        result = regra.validarSenhaFormato(senhaLetraMaiuscula);
-
-        //Afirmar
-        Assert.assertTrue(result);
-    }
-
-    @Test
-    public void validarSenhaComNumeroELetraTest(){
-        //Arranjar
-        String senhaNumeroLetra = "start123";
-
-        //Agir
-        result = regra.validarSenhaFormato(senhaNumeroLetra);
-
-        //Afirmar
-        Assert.assertTrue(result);
-    }
-
-    @Test
-    public void validarSenhaComCaracteresEspeciaisValidoTest(){
-        //Arranjar
-        String senhaCaracValido = "@senha@";
-
-        //Agir
-        result = regra.validarSenhaFormato(senhaCaracValido);
-
-        //Afirmar
-        Assert.assertTrue(result);
-    }
-
-    @Test
-    public void invalidarSenhaComCaracteresEspeciaisInvalidoTest(){
-        //Arranjar
-        String senhaCaracInvalido = "senha***";
-
-        //Agir
-        result = regra.validarSenhaFormato(senhaCaracInvalido);
+        result = regra.validarSenhaFormato(senha_Letra_Minuscula);
 
         //Afirmar
         Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarSenhaSoComLetraMaiusculaTest(){
+        //Arranjar
+        String senha_Letra_Maiuscula = "ABCDEFGHIJ";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Letra_Maiuscula);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarSenhaSoComNumeroTest(){
+        //Arranjar
+        String senha_Numero_Letra = "123456";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Numero_Letra);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarSenhaSoComCaracteresEspeciaisTest(){
+        //Arranjar
+        String senha_Caracter_Valido = "@$%#*&@";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Caracter_Valido);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarSenhaSemCaracteresEspeciaisTest(){
+        //Arranjar
+        String senha_Caracter_Invalido = "Boav1d4";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Caracter_Invalido);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarSenhaSemNumeroTest(){
+        //Arranjar
+        String senha_Sem_Numero = "Bo@vid@";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Sem_Numero);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarSenhaSemLetrasTest(){
+        //Arranjar
+        String senha_Sem_Letras = "123@%$";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Sem_Letras);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarSenhaSemLetraMaiusculaTest(){
+        //Arranjar
+        String senha_Sem_Letra_Maiuscula = "boav1d@";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Sem_Letra_Maiuscula);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarSenhaSemLetraMinusculaTest(){
+        //Arranjar
+        String senha_Sem_Letra_Minuscula = "BOAV1D@";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Sem_Letra_Minuscula);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void validarSenhaFormatoCorretoTest(){
+        //Arranjar
+        String senha_Formato_Correto = "Bo@v1da";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Formato_Correto);
+
+        //Afirmar
+        Assert.assertTrue(result);
     }
 
     @Test
     public void invalidarLoginSenhaEqualsTest() {
         //Arranjar
-        String senha = "abc123";
-        String login = "abc123";
+        String senha = "Dr@d0nForce";
+        String login = "Dr@d0nForce";
         //Agir
         result = regra.validarIgualdadeLoginSenha(login,senha);
         //Afirmar
@@ -382,7 +454,7 @@ public class UsuarioTeste {
     @Test
     public void validarLoginSenhaNotEqualsTest() {
         //Arranjar
-        String senha = "abc123";
+        String senha = "Dr@d0nForce";
         String login = "abc1234";
         //Agir
         result = regra.validarIgualdadeLoginSenha(login,senha);

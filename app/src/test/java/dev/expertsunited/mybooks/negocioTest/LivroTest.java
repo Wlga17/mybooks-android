@@ -10,28 +10,25 @@ import dev.expertsunited.mybooks.model.Livro;
 
 public class LivroTest {
 
-    private Livro livro;
+
     private LivroNegocio regra;
     private Boolean result;
 
-    private String tituloSoNumero;
-    private String tituloValidoSoLetraMinuscula;
-    private String tituloInvalidoSoLetraMinuscula;
-    private String tituloValidoSoLetraMaiuscula = "HARRY DAVIDSON";
 
     @Before
     public void iniciarObjeto(){
-        livro = new Livro();
+
         regra = new LivroNegocio();
+        result = true;
     }
 
     @Test
     public void validarTituloSoNumeroTest(){
         //Arranjar
-        String titulo = "123456";
+        String titulo_So_Numero = "123456";
 
         //Agir
-        boolean result = regra.validarTituloFormato(titulo);
+        result = regra.validarTituloFormato(titulo_So_Numero);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -40,10 +37,10 @@ public class LivroTest {
     @Test
     public void validatarTituloSoLetraMinusculaTest(){
         //Arranjar
-        String titulo = "asdfsd";
+        String titulo_So_Minuscula = "asdfsd";
 
         //Agir
-        boolean result = regra.validarTituloFormato(titulo);
+        result = regra.validarTituloFormato(titulo_So_Minuscula);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -52,10 +49,10 @@ public class LivroTest {
     @Test
     public void validarTituloSoLetraMaisuculaTest(){
         //Arranjar
-        String titulo = "MAODEDEUS";
+        String titulo_So_Maiuscula = "MAODEDEUS";
 
         //Agir
-        boolean result = regra.validarTituloFormato(titulo);
+        result = regra.validarTituloFormato(titulo_So_Maiuscula);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -64,10 +61,10 @@ public class LivroTest {
     @Test
     public void invalidarTituloCurtoTest(){
         //Arranjar
-        String titulo = "nos";
+        String titulo_Curto = "nos";
 
         //Agir
-        boolean result = regra.validarTituloFormato(titulo);
+        result = regra.validarTituloFormato(titulo_Curto);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -76,10 +73,10 @@ public class LivroTest {
     @Test
     public void invalidarTituloExcedenteTest(){
         //Arranjar
-        String titulo = "O Curioso Caso de Benjaminho Botao das neves";
+        String titulo_Excedente = "O Curioso Caso de Benjaminho Botao das neves";
 
         //Agir
-        boolean result = regra.validarTituloFormato(titulo);
+        result = regra.validarTituloFormato(titulo_Excedente);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -88,44 +85,58 @@ public class LivroTest {
     @Test
     public void validarTituloFormatoCorretoTest(){
         //Arranjar
-        String titulo = "O Ano 1";
+        String titulo_Valido = "O Ano é 1";
 
         //Agir
-        boolean result = regra.validarTituloFormato(titulo);
+        result = regra.validarTituloFormato(titulo_Valido);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void validarTituloNotNullTest(){
+    public void validarTituloNaoNuloTest(){
         //Arranjar
-        String titulo = "ABC Facil";
+        String titulo_Nao_Nulo = "ABC Facil";
 
         //Agir
-        boolean result = regra.validarTituloFormato(titulo);
+        result = regra.validarTituloNulo(titulo_Nao_Nulo);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void invalidarTituloNullTest(){
+    public void invalidarTituloNuloTest(){
         //Arranjar
-        String titulo = "";
+        String titulo_Nulo = "";
 
         //Agir
-        boolean result = regra.validarTituloFormato(titulo);
+        result = regra.validarTituloNulo(titulo_Nulo);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
+    @Test
+    public void validarAutorFormatoCorretoTest(){
+        //Arranjar
+        String autor_Valido = "Roberval Antônio de Melo";
+
+        //Agir
+        result = regra.validarAutorFormato(autor_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+
+
 
     @After
     public void destruirObjetos(){
-        livro = null;
         regra = null;
+        result = null;
     }
 
 

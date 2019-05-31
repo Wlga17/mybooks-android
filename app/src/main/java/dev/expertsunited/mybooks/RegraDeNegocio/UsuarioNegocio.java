@@ -7,7 +7,7 @@ public class UsuarioNegocio {
     public UsuarioNegocio() { }
 
     public boolean validarEmailFormato(String email){
-        String regex = "^[a-zA-Z0-9_.-]+@[a-zA-Z]+[.](.+)$";
+        String regex = "^[a-z0-9_.-]+@[a-z]+[.](.+)$";
         return email.matches(regex.trim());
     }
 
@@ -16,7 +16,7 @@ public class UsuarioNegocio {
     }
 
     public boolean validarNomeFormato(String nome) {
-        String regex = "^[a-zA-Z]{4,20}$";
+        String regex = "^[a-zà-úA-ZÀ-Ú +(a-zà-úA-ZÀ-Ú)]{4,30}$";
         return nome.matches(regex.trim());
     }
 
@@ -25,7 +25,7 @@ public class UsuarioNegocio {
     }
 
     public boolean validarLoginFormato(String login) {
-        String regex = "^[a-zA-Z0-9]{6,12}$";
+        String regex = "[a-zA-Z0-9@_-]{6,12}$";
         return login.matches(regex.trim());
     }
 
@@ -34,7 +34,7 @@ public class UsuarioNegocio {
     }
 
     public boolean validarSenhaFormato(String senha) {
-        String regex = "^[a-zA-Z0-9#$%@]{6,12}$";
+        String regex = "^((?=.*[a-z])(?=.*\\d)(?=.*[@#$*&%])(?=.*[A-Z]).{6,12})$";
         return senha.matches(regex.trim());
     }
 

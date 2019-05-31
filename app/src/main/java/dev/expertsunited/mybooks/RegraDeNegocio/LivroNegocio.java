@@ -6,7 +6,7 @@ public class LivroNegocio {
     }
 
     public boolean validarTituloFormato(String titulo) {
-        String regex = "^[a-zA-Z0-9]{4,20}$";
+        String regex = "^[a-zà-úA-ZÀ-Ú0-9 +(a-zà-úA-ZÀ-Ú0-9)]{4,40}$";
         return titulo.matches(regex.trim());
     }
 
@@ -15,7 +15,7 @@ public class LivroNegocio {
     }
 
     public boolean validarAutorFormato(String autor) {
-        String regex = "^[a-zA-Z]{4,20}$";
+        String regex = "^[a-zà-úA-ZÀ-Ú +(a-zà-úA-ZÀ-Ú)]{4,30}$";
         return autor.matches(regex.trim());
     }
 
@@ -24,7 +24,7 @@ public class LivroNegocio {
     }
 
     public boolean validarEdicaoFormato(String edicao) {
-        String regex = "^[a-z0-9]{2,10}$";
+        String regex = "^[a-zà-úA-ZÀ-Ú0-9 +(a-zà-úA-ZÀ-Ú0-9)]{2,10}$";
         return edicao.matches(regex.trim());
     }
 
@@ -33,7 +33,7 @@ public class LivroNegocio {
     }
 
     public boolean validarEditoraFormato(String editora) {
-        String regex = "^[a-zA-Z]{4,50}$";
+        String regex = "^[a-zà-úA-ZÀ-Ú +(a-zà-úA-ZÀ-Ú)]{4,30}$";
         return editora.matches(regex.trim());
     }
 
@@ -42,7 +42,7 @@ public class LivroNegocio {
     }
 
     public boolean validarIndicacaoFormato(String indicacao) {
-        String regex = "^[a-zA-Z]{4,20}$";
+        String regex = "^[a-zà-úA-ZÀ-Ú +(a-zà-úA-ZÀ-Ú)]{4,30}$";
         return indicacao.matches(regex.trim());
     }
 
@@ -51,7 +51,7 @@ public class LivroNegocio {
     }
 
     public boolean validarPrecoFormato(String preco) {
-        String regex = "^[0-9]{1,7}$";
+        String regex = "^\\d*(\\.\\d{1,2})?$";
         return preco.matches(regex.trim());
     }
 
