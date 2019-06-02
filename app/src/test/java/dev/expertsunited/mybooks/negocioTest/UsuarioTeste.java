@@ -462,6 +462,8 @@ public class UsuarioTeste {
         Assert.assertTrue(result);
     }
 
+    //commit de teste...
+
     @After
     public void destruirObjetos() {
         regra = null;
