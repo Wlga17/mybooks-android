@@ -24,7 +24,7 @@ public class LivroNegocio {
     }
 
     public boolean validarEdicaoFormato(String edicao) {
-        String regex = "^[a-zà-úA-ZÀ-Ú0-9 +(a-zà-úA-ZÀ-Ú0-9)]{2,10}$";
+        String regex = "^[a-zà-úA-ZÀ-Ú0-9 +(a-zà-úA-ZÀ-Ú0-9)]{2,30}$";
         return edicao.matches(regex.trim());
     }
 
@@ -33,7 +33,7 @@ public class LivroNegocio {
     }
 
     public boolean validarEditoraFormato(String editora) {
-        String regex = "^[a-zà-úA-ZÀ-Ú +(a-zà-úA-ZÀ-Ú)]{4,30}$";
+        String regex = "^[a-zà-úA-ZÀ-Ú +(a-zà-úA-ZÀ-Ú)]{4,20}$";
         return editora.matches(regex.trim());
     }
 
