@@ -146,10 +146,10 @@ public class LivroTest {
     @Test
     public void validarAutorNuloTest(){
         //Arranjar
-        String autor_naoNulo = "Eu que fiz";
+        String autor_NaoNulo = "Eu que fiz";
 
         //Agir
-        result = regra.validarAutorNulo(autor_naoNulo);
+        result = regra.validarAutorNulo(autor_NaoNulo);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -158,10 +158,10 @@ public class LivroTest {
     @Test
     public void invalidarAutorNuloTest(){
         //Arranjar
-        String autor_nulo = "";
+        String autor_Nulo = "";
 
         //Agir
-        result = regra.validarAutorNulo(autor_nulo);
+        result = regra.validarAutorNulo(autor_Nulo);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -170,10 +170,10 @@ public class LivroTest {
     @Test
     public void validarEdicaoFormatoTest(){
         //Arranjar
-        String edicao = "Luxo 123";
+        String edicao_Valida = "Luxo 123";
 
         //Agir
-        result = regra.validarEdicaoFormato(edicao);
+        result = regra.validarEdicaoFormato(edicao_Valida);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -182,10 +182,10 @@ public class LivroTest {
     @Test
     public void validarEdicaoFormatoSoNumeroTest(){
         //Arranjar
-        String edicao = "123456";
+        String edicao_So_Numero = "123456";
 
         //Agir
-        result = regra.validarEdicaoFormato(edicao);
+        result = regra.validarEdicaoFormato(edicao_So_Numero);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -194,82 +194,34 @@ public class LivroTest {
     @Test
     public void validarEdicaoFormatoSoLetraMinusculaTest(){
         //Arranjar
-        String edicao = "edicao barata";
+        String edicao_So_Letras_Minuscula = "edicao barata";
 
         //Agir
-        result = regra.validarEdicaoFormato(edicao);
+        result = regra.validarEdicaoFormato(edicao_So_Letras_Minuscula);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void validarEdicaoFormatoSoLetraMaiuscula(){
+    public void validarEdicaoFormatoSoLetraMaiusculaTest(){
         //Arranjar
-        String edicao = "EDICAO CARA";
+        String edicao_So_Letras_Maiuscula = "EDICAO CARA";
 
         //Agir
-        result = regra.validarEdicaoFormato(edicao);
+        result = regra.validarEdicaoFormato(edicao_So_Letras_Maiuscula);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void validarEdicaoFormatoLetraNumero(){
+    public void validarEdicaoFormatoLetraNumeroTest(){
         //Arranjar
-        String edicao = "Edicao 123";
+        String edicao_Letras_Numeros = "123 Edicao";
 
         //Agir
-        result = regra.validarEdicaoFormato(edicao);
-
-        //Afirmar
-        Assert.assertTrue(result);
-    }
-
-    @Test
-    public void invalidarEdicaoNulo(){
-        //Arranjar
-        String edicao = "";
-
-        //Agir
-        result = regra.validarEdicaoFormato(edicao);
-
-        //Afirmar
-        Assert.assertFalse(result);
-    }
-
-    @Test
-    public void invalidarEdicaoCurtaTest(){
-        //Arranjar
-        String edicao = "e";
-
-        //Agir
-        result = regra.validarEdicaoFormato(edicao);
-
-        //Afirmar
-        Assert.assertFalse(result);
-    }
-
-    @Test
-    public void invalidarEdicaoExcedente(){
-        //Arranjar
-        String edicao = "minhanadamolevidapassandodoslimites";
-
-        //Agir
-        result = regra.validarEdicaoFormato(edicao);
-
-        //Afirmar
-        Assert.assertFalse(result);
-    }
-
-    @Test
-    public void validarEdicaoNuloTest(){
-        //Arranjar
-        String edicao = "edicao";
-
-        //Agir
-        result = regra.validarEdicaoNulo(edicao);
+        result = regra.validarEdicaoFormato(edicao_Letras_Numeros);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -278,118 +230,155 @@ public class LivroTest {
     @Test
     public void invalidarEdicaoNuloTest(){
         //Arranjar
-        String edicao = "";
+        String edicao_Nulo = "";
 
         //Agir
-        result = regra.validarEdicaoNulo(edicao);
+        result = regra.validarEdicaoFormato(edicao_Nulo);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void validarEditoraFormatoCorreto(){
+    public void invalidarEdicaoCurtaTest(){
         //Arranjar
-        String editora = "Editora luz e vida";
+        String edicao_Curta = "e";
 
         //Agir
-        result = regra.validarEditoraFormato(editora);
+        result = regra.validarEdicaoFormato(edicao_Curta);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarEdicaoExcedenteTest(){
+        //Arranjar
+        String edicao_Excedente = "minhanadamolevidapassandodoslimites";
+
+        //Agir
+        result = regra.validarEdicaoFormato(edicao_Excedente);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void validarEdicaoNuloTest(){
+        //Arranjar
+        String edicao_Nulo = "edicao";
+
+        //Agir
+        result = regra.validarEdicaoNulo(edicao_Nulo);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+
+    @Test
+    public void validarEditoraFormatoCorretoTest(){
+        //Arranjar
+        String editora_Valido = "Editora luz e vida";
+
+        //Agir
+        result = regra.validarEditoraFormato(editora_Valido);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void validarEditoraSoLetraMinuscula(){
+    public void validarEditoraSoLetraMinusculaTest(){
         //Arranjar
-        String editora = "editora do bem";
+        String editora_So_Letras_Minusculas = "editora do bem";
 
         //Agir
-        result = regra.validarEditoraFormato(editora);
+        result = regra.validarEditoraFormato(editora_So_Letras_Minusculas);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void validarEditoraSoLetraMaiuscula(){
+    public void validarEditoraSoLetraMaiusculaTest(){
         //Arranjar
-        String editora = "EDITORA DO MAL";
+        String editora_So_Letras_Maiusculas = "EDITORA DO MAL";
 
         //Agir
-        result = regra.validarEditoraFormato(editora);
+        result = regra.validarEditoraFormato(editora_So_Letras_Maiusculas);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void invalidarEditoraNumeroMinimo(){
+    public void invalidarEditoraCurtaTest(){
         //Arranjar
-        String editora = "edi";
+        String editora_Curta = "edi";
 
         //Agir
-        result = regra.validarEditoraFormato(editora);
+        result = regra.validarEditoraFormato(editora_Curta);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void invalidarEditoraNumeroMaximo(){
+    public void invalidarEditoraExcedenteTest(){
         //Arranjar
-        String editora = "editoraquenaopassapelavalidacaodenumeromaximo";
+        String editora_Excedente = "editoraquenaopassapelavalidacaodenumeromaximo";
 
         //Agir
-        result = regra.validarEditoraFormato(editora);
+        result = regra.validarEditoraFormato(editora_Excedente);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void invalidarEditoraLetra(){
+    public void invalidarEditoraSemLetraTest(){
         //Arranjar
-        String editora = "12345";
+        String editora_Sem_Letras = "12345";
 
         //Agir
-        result = regra.validarEditoraFormato(editora);
+        result = regra.validarEditoraFormato(editora_Sem_Letras);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void invalidarEditoraLetraNumero(){
+    public void invalidarEditoraLetraNumeroTest(){
         //Arranjar
-        String editora = "12345naoVale";
+        String editora_Com_Numeros = "12345naoVale";
 
         //Agir
-        result = regra.validarEditoraFormato(editora);
+        result = regra.validarEditoraFormato(editora_Com_Numeros);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void validarEditoraNulo(){
+    public void validarEditoraNaoNuloTest(){
         //Arranjar
-        String editora = "editora aprovada";
+        String editora_Nao_Nulo = "editora aprovada";
 
         //Agir
-        result = regra.validarEditoraNulo(editora);
+        result = regra.validarEditoraNulo(editora_Nao_Nulo);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void invalidarEditoraNulo(){
+    public void invalidarEditoraNuloTest(){
         //Arranjar
-        String editora = "";
+        String editora_Nulo = "";
 
         //Agir
-        result = regra.validarEditoraNulo(editora);
+        result = regra.validarEditoraNulo(editora_Nulo);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -398,82 +387,82 @@ public class LivroTest {
     @Test
     public void validarIndicacaoFormatoCorretoTest(){
         //Arranjar
-        String indicacao = "Indicacao aprovada";
+        String indicacao_Valida = "Gabriel Carvalho";
 
         //Agir
-        result = regra.validarIndicacaoFormato(indicacao);
+        result = regra.validarIndicacaoFormato(indicacao_Valida);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void validarIndicacoSoMinuscula(){
+    public void validarIndicacoSoMinusculaTest(){
         //Arranjar
-        String indicacao = "indicacao minuscula";
+        String indicacao_So_Minusculas = "indicacao minuscula";
 
         //Agir
-        result = regra.validarIndicacaoFormato(indicacao);
+        result = regra.validarIndicacaoFormato(indicacao_So_Minusculas);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void validarIndicacoSoMaiuscula(){
+    public void validarIndicacoSoMaiusculaTest(){
         //Arranjar
-        String indicacao = "IDICACAO MAIUSCULA";
+        String indicacao_So_Maiusculas = "IDICACAO MAIUSCULA";
 
         //Agir
-        result = regra.validarIndicacaoFormato(indicacao);
+        result = regra.validarIndicacaoFormato(indicacao_So_Maiusculas);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void invalidarIndicacaoNumero(){
+    public void invalidarIndicacaoSoNumeroTest(){
         //Arranjar
-        String indicacao = "123456";
+        String indicacao_So_Numero = "123456";
 
         //Agir
-        result = regra.validarIndicacaoFormato(indicacao);
+        result = regra.validarIndicacaoFormato(indicacao_So_Numero);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void invalidarIndicacaoNumeroLetra(){
+    public void invalidarIndicacaoNumeroLetraTest(){
         //Arranjar
-        String indicacao = "testando123456";
+        String indicacao_Numero_Letra = "testando123456";
 
         //Agir
-        result = regra.validarIndicacaoFormato(indicacao);
+        result = regra.validarIndicacaoFormato(indicacao_Numero_Letra);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void validarIndicacaoNulo(){
+    public void validarIndicacaoNaoNuloTest(){
         //Arranjar
-        String indicacao = "Indicacao valida";
+        String indicacao_Nao_Nulo = "Indicacao valida";
 
         //Agir
-        result = regra.validarIndicacaoFormato(indicacao);
+        result = regra.validarIndicacaoFormato(indicacao_Nao_Nulo);
 
         //Afirmar
         Assert.assertTrue(result);
     }
 
     @Test
-    public void invalidarIndicacaoNulo(){
+    public void invalidarIndicacaoNuloTest(){
         //Arranjar
-        String indicacao = "";
+        String indicacao_Nulo = "";
 
         //Agir
-        result = regra.validarIndicacaoFormato(indicacao);
+        result = regra.validarIndicacaoNulo(indicacao_Nulo);
 
         //Afirmar
         Assert.assertFalse(result);
