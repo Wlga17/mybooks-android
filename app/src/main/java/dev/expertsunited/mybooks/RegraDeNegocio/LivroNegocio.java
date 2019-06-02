@@ -51,7 +51,7 @@ public class LivroNegocio {
     }
 
     public boolean validarPrecoFormato(String preco) {
-        String regex = "^\\d*(\\.\\d{1,2})?$";
+        String regex = "^\\d{1,4}(\\.\\d{1,2})?$";
         return preco.matches(regex.trim());
     }
 

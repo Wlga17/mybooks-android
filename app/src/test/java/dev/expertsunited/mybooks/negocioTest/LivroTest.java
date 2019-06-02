@@ -468,6 +468,141 @@ public class LivroTest {
         Assert.assertFalse(result);
     }
 
+    @Test
+    public void validarPrecoZeroTeste(){
+        //Arranjar
+        String precoZero = "0";
+
+        //Agir
+        result = regra.validarPrecoFormato(precoZero);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+
+    @Test
+    public void invalidarPrecoNegativoTeste(){
+        //Arranjar
+        String precoNegativo = "-1";
+
+        //Agir
+        result = regra.validarPrecoFormato(precoNegativo);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarPrecoExcedenteTeste(){
+        //Arranjar
+        String precoExcedente = "10000";
+
+        //Agir
+        result = regra.validarPrecoFormato(precoExcedente);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarPrecoComVirgulaTeste(){
+        //Arranjar
+        String precoComVirgula = "10,02";
+
+        //Agir
+        result = regra.validarPrecoFormato(precoComVirgula);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void validarPrecoComPontoTeste(){
+        //Arranjar
+        String precoComPonto = "10.02";
+
+        //Agir
+        result = regra.validarPrecoFormato(precoComPonto);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void invalidarPrecoComPonto_E_VirgulaTeste(){
+        //Arranjar
+        String precoComPonto_E_Virgula = "1000.5,2";
+
+        //Agir
+        result = regra.validarPrecoFormato(precoComPonto_E_Virgula);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarPrecoNuloTeste(){
+        //Arranjar
+        String precoNulo = "";
+
+        //Agir
+        result = regra.validarPrecoNulo(precoNulo);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void validarPrecoNaoNuloTeste(){
+        //Arranjar
+        String precoNaoNulo = "10";
+
+        //Agir
+        result = regra.validarPrecoNulo(precoNaoNulo);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void invalidarPrecoComEspacoTeste(){
+        //Arranjar
+        String precoComEspaco = "10 30";
+
+        //Agir
+        result = regra.validarPrecoFormato(precoComEspaco);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarPrecoComLetraTeste(){
+        //Arranjar
+        String precoComLetra = "10a30";
+
+        //Agir
+        result = regra.validarPrecoFormato(precoComLetra);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarPrecoComCaracterEspecialTeste(){
+        //Arranjar
+        String precoComCaracterEspecial = "10@$";
+
+        //Agir
+        result = regra.validarPrecoFormato(precoComCaracterEspecial);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+
+
     @After
     public void destruirObjetos(){
         regra = null;
