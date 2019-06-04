@@ -67,8 +67,9 @@ public class CadastroActivity extends AppCompatActivity implements View.OnClickL
            }
        }
        if (id == R.id.btn_cancelar) {
-           Intent intent = new Intent(this, MainActivity.class);
-           startActivity(intent);
+           finish();
+//           Intent intent = new Intent(this, MainActivity.class);
+//           startActivity(intent);
        }
     }
 
