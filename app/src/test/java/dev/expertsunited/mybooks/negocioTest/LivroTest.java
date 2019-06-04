@@ -84,6 +84,30 @@ public class LivroTest {
     }
 
     @Test
+    public void validarTituloTamanhoMinimoTest(){
+        //Arranjar
+        String titulo_Minimo_Valido = "1982";
+
+        //Agir
+        result = regra.validarTituloFormato(titulo_Minimo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarTituloTamanhoMaximoTest(){
+        //Arranjar
+        String titulo_Maximo_Valido = "O Curioso Caso de Benjamin Button na Olx";
+
+        //Agir
+        result = regra.validarTituloFormato(titulo_Maximo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
     public void validarTituloFormatoCorretoTest(){
         //Arranjar
         String titulo_Valido = "O Ano é 1";
@@ -132,24 +156,72 @@ public class LivroTest {
     }
 
     @Test
-    public void invalidarAutorFormatoCorretoTest(){
+    public void invalidarAutorSoNumeroTest(){
         //Arranjar
-        String autor_Invalido = "123456";
+        String autor_So_Numeros = "123456";
 
         //Agir
-        result = regra.validarAutorFormato(autor_Invalido);
+        result = regra.validarAutorFormato(autor_So_Numeros);
 
         //Afirmar
         Assert.assertFalse(result);
     }
 
     @Test
-    public void validarAutorNuloTest(){
+    public void invalidarAutorCurtoTest(){
         //Arranjar
-        String autor_NaoNulo = "Eu que fiz";
+        String autor_Curto = "Ico";
 
         //Agir
-        result = regra.validarAutorNulo(autor_NaoNulo);
+        result = regra.validarAutorFormato(autor_Curto);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarAutorExcedenteTest(){
+        //Arranjar
+        String autor_Excedente = "Dagoberto Roberto Roberval Sosy";
+
+        //Agir
+        result = regra.validarAutorFormato(autor_Excedente);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void validarAutorTamanhoMinimoTest(){
+        //Arranjar
+        String autor_Minimo_Valido = "Icón";
+
+        //Agir
+        result = regra.validarAutorFormato(autor_Minimo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarAutorTamanhoMaximoTest(){
+        //Arranjar
+        String autor_Maximo_Valido = "Dagoberto Roberto Roberval Sós";
+
+        //Agir
+        result = regra.validarAutorFormato(autor_Maximo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarAutorNaoNuloTest(){
+        //Arranjar
+        String autor_Nao_Nulo = "Eu que fiz";
+
+        //Agir
+        result = regra.validarAutorNulo(autor_Nao_Nulo);
 
         //Afirmar
         Assert.assertTrue(result);
@@ -227,17 +299,7 @@ public class LivroTest {
         Assert.assertTrue(result);
     }
 
-    @Test
-    public void invalidarEdicaoNuloTest(){
-        //Arranjar
-        String edicao_Nulo = "";
 
-        //Agir
-        result = regra.validarEdicaoFormato(edicao_Nulo);
-
-        //Afirmar
-        Assert.assertFalse(result);
-    }
 
     @Test
     public void invalidarEdicaoCurtaTest(){
@@ -254,7 +316,7 @@ public class LivroTest {
     @Test
     public void invalidarEdicaoExcedenteTest(){
         //Arranjar
-        String edicao_Excedente = "minhanadamolevidapassandodoslimites";
+        String edicao_Excedente = "minha nada mole vida passando dos limites";
 
         //Agir
         result = regra.validarEdicaoFormato(edicao_Excedente);
@@ -264,15 +326,51 @@ public class LivroTest {
     }
 
     @Test
-    public void validarEdicaoNuloTest(){
+    public void validarEdicaoTamanhoMinimoTest(){
         //Arranjar
-        String edicao_Nulo = "edicao";
+        String edicao_Minimo_Valido = "E1";
+
+        //Agir
+        result = regra.validarEdicaoFormato(edicao_Minimo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarEdicaoTamanhoMaximoTest(){
+        //Arranjar
+        String edicao_Maximo_Valido = "Edição de Luxo Luxuosa xXx 12B";
+
+        //Agir
+        result = regra.validarEdicaoFormato(edicao_Maximo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarEdicaoNaoNuloTest(){
+        //Arranjar
+        String edicao_Nao_Nulo = "edicao";
+
+        //Agir
+        result = regra.validarEdicaoNulo(edicao_Nao_Nulo);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void invalidarEdicaoNuloTest(){
+        //Arranjar
+        String edicao_Nulo = "";
 
         //Agir
         result = regra.validarEdicaoNulo(edicao_Nulo);
 
         //Afirmar
-        Assert.assertTrue(result);
+        Assert.assertFalse(result);
     }
 
 
@@ -334,6 +432,30 @@ public class LivroTest {
 
         //Afirmar
         Assert.assertFalse(result);
+    }
+
+    @Test
+    public void validarEditoraTamanhoMinimoTest(){
+        //Arranjar
+        String editora_Minimo_valido = "Edit";
+
+        //Agir
+        result = regra.validarEditoraFormato(editora_Minimo_valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarEditoraTamanhoMaximoTest(){
+        //Arranjar
+        String editora_Maximo_valido = "Editoras Fantardigas";
+
+        //Agir
+        result = regra.validarEditoraFormato(editora_Maximo_valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -411,7 +533,7 @@ public class LivroTest {
     @Test
     public void validarIndicacoSoMaiusculaTest(){
         //Arranjar
-        String indicacao_So_Maiusculas = "IDICACAO MAIUSCULA";
+        String indicacao_So_Maiusculas = "INDICACAO MAIUSCULA";
 
         //Agir
         result = regra.validarIndicacaoFormato(indicacao_So_Maiusculas);
@@ -442,6 +564,54 @@ public class LivroTest {
 
         //Afirmar
         Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarIndicacaoCurtaTest(){
+        //Arranjar
+        String indicacao_Curta = "Ind";
+
+        //Agir
+        result = regra.validarIndicacaoFormato(indicacao_Curta);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void invalidarIndicacaoExcedenteTest(){
+        //Arranjar
+        String indicacao_Excedente = "Roberval Dagoberto Teixeira Sós";
+
+        //Agir
+        result = regra.validarIndicacaoFormato(indicacao_Excedente);
+
+        //Afirmar
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void validarIndicacaoTamanhoMinimoTest(){
+        //Arranjar
+        String indicacao_Minimo_Valido = "Robs";
+
+        //Agir
+        result = regra.validarIndicacaoFormato(indicacao_Minimo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarIndicacaoTamanhoMaximoTest(){
+        //Arranjar
+        String indicacao_Maximo_Valido = "Roberval Dagoberto Teixeira Só";
+
+        //Agir
+        result = regra.validarIndicacaoFormato(indicacao_Maximo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -503,6 +673,30 @@ public class LivroTest {
 
         //Afirmar
         Assert.assertFalse(result);
+    }
+
+    @Test
+    public void validarPrecoTamanhoMinimoTeste(){
+        //Arranjar
+        String preco_Minimo_Valido = "1";
+
+        //Agir
+        result = regra.validarPrecoFormato(preco_Minimo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarPrecoTamanhoMaximoTeste(){
+        //Arranjar
+        String preco_Maximo_Valido = "9999.99";
+
+        //Agir
+        result = regra.validarPrecoFormato(preco_Maximo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
     }
 
     @Test

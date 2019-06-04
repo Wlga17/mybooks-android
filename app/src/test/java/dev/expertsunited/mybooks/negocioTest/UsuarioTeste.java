@@ -165,6 +165,30 @@ public class UsuarioTeste {
     }
 
     @Test
+    public void validarNomeTamanhoMinimoTest() {
+        //Arranjar
+        String nome_Minimo_Valido = "Bill";
+
+        //Agir
+        result = regra.validarNomeFormato(nome_Minimo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarNomeTamanhoMaximoTest() {
+        //Arranjar
+        String nome_Maximo_Valido = "Bill Clinton da Silva Neto Sas";
+
+        //Agir
+        result = regra.validarNomeFormato(nome_Maximo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
     public void invalidarNomeComNumeroTest(){
         //Arranjar
         String nome_Com_Numero = "william10";
@@ -249,6 +273,30 @@ public class UsuarioTeste {
     }
 
     @Test
+    public void validarLoginTamanhoMinimoTest(){
+        //Arranjar
+        String login_Minimo_Valido = "Avovoh";
+
+        //Agir
+        result = regra.validarLoginFormato(login_Minimo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarLoginTamanhoMaximoTest(){
+        //Arranjar
+        String login_Maximo_Valido = "Avohai_Tex12";
+
+        //Agir
+        result = regra.validarLoginFormato(login_Maximo_Valido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
     public void invalidarLoginComCaracteresEspeciaisInvalidosTest(){
         //Arranjar
         String login_Caracter_Especial = "*avohai";
@@ -321,6 +369,30 @@ public class UsuarioTeste {
     }
 
     @Test
+    public void validarSenhaTamanhoMinimoTest(){
+        //Arranjar
+        String senha_Minimo_Vlaido = "Do@122";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Minimo_Vlaido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void validarSenhaTamanhoMaximoTest(){
+        //Arranjar
+        String senha_Maximo_Vlaido = "Dr4g@oF0rceX";
+
+        //Agir
+        result = regra.validarSenhaFormato(senha_Maximo_Vlaido);
+
+        //Afirmar
+        Assert.assertTrue(result);
+    }
+
+    @Test
     public void invalidarSenhaSoComLetraMinusculaTest(){
         //Arranjar
         String senha_Letra_Minuscula = "abcdefhg";
@@ -347,10 +419,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarSenhaSoComNumeroTest(){
         //Arranjar
-        String senha_Numero_Letra = "123456";
+        String senha_Numero = "123456";
 
         //Agir
-        result = regra.validarSenhaFormato(senha_Numero_Letra);
+        result = regra.validarSenhaFormato(senha_Numero);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -359,10 +431,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarSenhaSoComCaracteresEspeciaisTest(){
         //Arranjar
-        String senha_Caracter_Valido = "@$%#*&@";
+        String senha_Caracter_Especial = "@$%#*&@";
 
         //Agir
-        result = regra.validarSenhaFormato(senha_Caracter_Valido);
+        result = regra.validarSenhaFormato(senha_Caracter_Especial);
 
         //Afirmar
         Assert.assertFalse(result);
@@ -371,10 +443,10 @@ public class UsuarioTeste {
     @Test
     public void invalidarSenhaSemCaracteresEspeciaisTest(){
         //Arranjar
-        String senha_Caracter_Invalido = "Boav1d4";
+        String senha_Sem_Caracter_Especial = "Boav1d4";
 
         //Agir
-        result = regra.validarSenhaFormato(senha_Caracter_Invalido);
+        result = regra.validarSenhaFormato(senha_Sem_Caracter_Especial);
 
         //Afirmar
         Assert.assertFalse(result);
