@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import dev.expertsunited.mybooks.database.LivroDAO;
@@ -36,6 +37,7 @@ public class LivroDAOTest {
         livro.setAutor("");
 
         //Agir
+        Mockito.doCallRealMethod().when(dao).cadastrar(livro);
         boolean result = dao.cadastrar(livro);
 
         //Afirmar
@@ -50,6 +52,7 @@ public class LivroDAOTest {
         livro.setValor(20.0);
 
         //Agir
+        Mockito.doCallRealMethod().when(dao).cadastrar(livro);
         boolean result = dao.cadastrar(livro);
 
         //Afirmar
@@ -62,6 +65,7 @@ public class LivroDAOTest {
         livro = null;
 
         //Agir
+        Mockito.doCallRealMethod().when(dao).cadastrar(livro);
         boolean result = dao.cadastrar(livro);
 
         //Afirmar
@@ -75,6 +79,7 @@ public class LivroDAOTest {
         livro.setAutor("a");
 
         //Agir
+        Mockito.doCallRealMethod().when(dao).alterar(livro);
         boolean result = dao.alterar(livro);
 
         //Afirmar

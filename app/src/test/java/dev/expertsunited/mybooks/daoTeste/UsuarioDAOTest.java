@@ -43,6 +43,7 @@ public class UsuarioDAOTest{
         u.setSenha("12345");
 
         //Agir
+        Mockito.doCallRealMethod().when(dao).cadastrar(u);
         boolean result = dao.cadastrar(u);
 
         //Afirmar
@@ -58,6 +59,7 @@ public class UsuarioDAOTest{
         u.setSenha("Wil100%");
 
         //Agir
+        Mockito.doCallRealMethod().when(dao).cadastrar(u);
         boolean result = dao.cadastrar(u);
 
         //Afirmar
@@ -70,6 +72,7 @@ public class UsuarioDAOTest{
         u = null;
 
         //Agir
+        Mockito.doCallRealMethod().when(dao).cadastrar(u);
         boolean result = dao.cadastrar(u);
 
         //Afirmar
@@ -85,6 +88,7 @@ public class UsuarioDAOTest{
         u.setSenha("");
 
         //Agir
+        Mockito.doCallRealMethod().when(dao).cadastrar(u);
         boolean result = dao.cadastrar(u);
 
         //Afirmar
