@@ -639,7 +639,7 @@ public class LivroTest {
     }
 
     @Test
-    public void validarPrecoZeroTeste(){
+    public void validarPrecoZeroTest(){
         //Arranjar
         String precoZero = "0";
 
@@ -652,7 +652,7 @@ public class LivroTest {
 
 
     @Test
-    public void invalidarPrecoNegativoTeste(){
+    public void invalidarPrecoNegativoTest(){
         //Arranjar
         String precoNegativo = "-1";
 
@@ -664,7 +664,7 @@ public class LivroTest {
     }
 
     @Test
-    public void invalidarPrecoExcedenteTeste(){
+    public void invalidarPrecoExcedenteTest(){
         //Arranjar
         String precoExcedente = "10000";
 
@@ -676,7 +676,7 @@ public class LivroTest {
     }
 
     @Test
-    public void validarPrecoTamanhoMinimoTeste(){
+    public void validarPrecoTamanhoMinimoTest(){
         //Arranjar
         String preco_Minimo_Valido = "1";
 
@@ -688,7 +688,7 @@ public class LivroTest {
     }
 
     @Test
-    public void validarPrecoTamanhoMaximoTeste(){
+    public void validarPrecoTamanhoMaximoTest(){
         //Arranjar
         String preco_Maximo_Valido = "9999.99";
 
@@ -700,7 +700,7 @@ public class LivroTest {
     }
 
     @Test
-    public void invalidarPrecoComVirgulaTeste(){
+    public void invalidarPrecoComVirgulaTest(){
         //Arranjar
         String precoComVirgula = "10,02";
 
@@ -712,7 +712,7 @@ public class LivroTest {
     }
 
     @Test
-    public void validarPrecoComPontoTeste(){
+    public void validarPrecoComPontoTest(){
         //Arranjar
         String precoComPonto = "10.02";
 
@@ -724,7 +724,7 @@ public class LivroTest {
     }
 
     @Test
-    public void invalidarPrecoComPonto_E_VirgulaTeste(){
+    public void invalidarPrecoComPonto_E_VirgulaTest(){
         //Arranjar
         String precoComPonto_E_Virgula = "1000.5,2";
 
@@ -736,7 +736,7 @@ public class LivroTest {
     }
 
     @Test
-    public void invalidarPrecoNuloTeste(){
+    public void invalidarPrecoNuloTest(){
         //Arranjar
         String precoNulo = "";
 
@@ -748,7 +748,7 @@ public class LivroTest {
     }
 
     @Test
-    public void validarPrecoNaoNuloTeste(){
+    public void validarPrecoNaoNuloTest(){
         //Arranjar
         String precoNaoNulo = "10";
 
@@ -760,7 +760,7 @@ public class LivroTest {
     }
 
     @Test
-    public void invalidarPrecoComEspacoTeste(){
+    public void invalidarPrecoComEspacoTest(){
         //Arranjar
         String precoComEspaco = "10 30";
 
@@ -772,7 +772,7 @@ public class LivroTest {
     }
 
     @Test
-    public void invalidarPrecoComLetraTeste(){
+    public void invalidarPrecoComLetraTest(){
         //Arranjar
         String precoComLetra = "10a30";
 
@@ -784,7 +784,7 @@ public class LivroTest {
     }
 
     @Test
-    public void invalidarPrecoComCaracterEspecialTeste(){
+    public void invalidarPrecoComCaracterEspecialTest(){
         //Arranjar
         String precoComCaracterEspecial = "10@$";
 
